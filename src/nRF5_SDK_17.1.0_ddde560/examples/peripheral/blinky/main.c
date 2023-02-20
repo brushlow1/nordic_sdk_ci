@@ -45,8 +45,10 @@
  * @brief Blinky Example Application main file.
  *
  * This file contains the source code for a sample application to blink LEDs.
- * 
+ *
  */
+
+// sample change
 
 #include <stdbool.h>
 #include <stdint.h>
