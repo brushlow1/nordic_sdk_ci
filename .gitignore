@@ -1,2 +1,8 @@
 */Output
 *.emSession
+*.vcxproj
+*.png
+*.msi
+*.html
+*Doxyfile*
+*.tex
