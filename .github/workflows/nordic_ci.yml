@@ -31,13 +31,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
           
-      - name: cppcheck
+      - name: Cppcheck
         uses: deep5050/cppcheck-action@main
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
           
         
-      - name: publish report    
+      - name: Publish report    
         uses: mikeal/publish-to-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
