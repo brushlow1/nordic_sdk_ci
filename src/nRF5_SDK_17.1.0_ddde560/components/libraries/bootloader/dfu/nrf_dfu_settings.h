@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 /**@file
@@ -47,16 +48,15 @@
 #ifndef NRF_DFU_SETTINGS_H__
 #define NRF_DFU_SETTINGS_H__
 
-#include <stdint.h>
-#include "nrf_dfu_types.h"
 #include "nrf_dfu_flash.h"
+#include "nrf_dfu_types.h"
 #include "sdk_config.h"
 #include "sdk_errors.h"
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 /**@brief   Global settings.
  *
@@ -65,38 +65,40 @@ extern "C" {
  */
 extern nrf_dfu_settings_t s_dfu_settings;
 
-
 /**@brief   Function for writing DFU settings to flash.
  *
- * @param[in]   callback    Pointer to a function that is called after completing the write operation.
+ * @param[in]   callback    Pointer to a function that is called after
+ * completing the write operation.
  *
  * @retval  NRF_SUCCESS         If the write process was successfully initiated.
  * @retval  NRF_ERROR_INTERNAL  If a flash error occurred.
  */
 ret_code_t nrf_dfu_settings_write(nrf_dfu_flash_callback_t callback);
 
-
 /**@brief   Function for backing up the settings.
  *
- * This function copies the contents of the settings page (in flash) to a separate page (in flash).
- * During @ref nrf_dfu_settings_init, the backup is restored if the original is invalid.
+ * This function copies the contents of the settings page (in flash) to a
+ * separate page (in flash). During @ref nrf_dfu_settings_init, the backup is
+ * restored if the original is invalid.
  *
- * @param[in]   callback    Pointer to a function that is called after completing the write operation.
+ * @param[in]   callback    Pointer to a function that is called after
+ * completing the write operation.
  */
 void nrf_dfu_settings_backup(nrf_dfu_flash_callback_t callback);
 
-
 /**@brief   Function for writing DFU settings to flash and to backup.
  *
- * This function first calls @ref nrf_dfu_settings_write and then @ref nrf_dfu_settings_backup.
+ * This function first calls @ref nrf_dfu_settings_write and then @ref
+ * nrf_dfu_settings_backup.
  *
- * @param[in]   callback    Pointer to a function that is called after completing the write and backup operation.
+ * @param[in]   callback    Pointer to a function that is called after
+ * completing the write and backup operation.
  *
  * @retval  NRF_SUCCESS         If the write process was successfully initiated.
- * @retval  NRF_ERROR_INTERNAL  If a flash error occurred during the first write.
+ * @retval  NRF_ERROR_INTERNAL  If a flash error occurred during the first
+ * write.
  */
 ret_code_t nrf_dfu_settings_write_and_backup(nrf_dfu_flash_callback_t callback);
-
 
 /**@brief   Function for initializing the DFU settings structure.
  *
@@ -108,7 +110,6 @@ ret_code_t nrf_dfu_settings_write_and_backup(nrf_dfu_flash_callback_t callback);
  */
 void nrf_dfu_settings_reinit(void);
 
-
 /**@brief   Function for initializing the DFU settings module.
  *
  * @retval  NRF_SUCCESS         If the initialization was successful.
@@ -116,15 +117,15 @@ void nrf_dfu_settings_reinit(void);
  */
 ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized);
 
-
 #if defined(NRF_DFU_TRANSPORT_BLE) && NRF_DFU_TRANSPORT_BLE
-/** @brief Function for storing peer data received through an SVCI call in DFU settings.
+/** @brief Function for storing peer data received through an SVCI call in DFU
+ * settings.
  *
- * @note The content of the type can be verified by a CRC value stored inside the struct
- *       If the CRC value is 0xFFFFFFFF, it means that no data is set.
+ * @note The content of the type can be verified by a CRC value stored inside
+ * the struct If the CRC value is 0xFFFFFFFF, it means that no data is set.
  *
- * @note The storage operation is an asynchronous progress. Success will be notified
- *       through system events raised by the SoftDevice.
+ * @note The storage operation is an asynchronous progress. Success will be
+ * notified through system events raised by the SoftDevice.
  *
  * @param[in]   p_data  Peer data to be stored in flash.
  *
@@ -132,8 +133,7 @@ ret_code_t nrf_dfu_settings_init(bool sd_irq_initialized);
  * @retval  NRF_ERROR_NULL  p_data was NULL.
  * @retval  Any other error code reported by SoftDevice API calls.
  */
-ret_code_t nrf_dfu_settings_peer_data_write(nrf_dfu_peer_data_t * p_data);
-
+ret_code_t nrf_dfu_settings_peer_data_write(nrf_dfu_peer_data_t *p_data);
 
 /** @brief Function for copying peer data from DFU settings to RAM.
  *
@@ -142,8 +142,7 @@ ret_code_t nrf_dfu_settings_peer_data_write(nrf_dfu_peer_data_t * p_data);
  * @retval  NRF_SUCCESS     Peer data was successfully copied.
  * @retval  NRF_ERROR_NULL  p_data was NULL.
  */
-ret_code_t nrf_dfu_settings_peer_data_copy(nrf_dfu_peer_data_t * p_data);
-
+ret_code_t nrf_dfu_settings_peer_data_copy(nrf_dfu_peer_data_t *p_data);
 
 /** @brief Function for validating peer data in DFU settings.
  *
@@ -151,22 +150,23 @@ ret_code_t nrf_dfu_settings_peer_data_copy(nrf_dfu_peer_data_t * p_data);
  */
 bool nrf_dfu_settings_peer_data_is_valid(void);
 
-
-/** @brief Function for storing an advertisement name received through an SVCI call in DFU settings.
+/** @brief Function for storing an advertisement name received through an SVCI
+ * call in DFU settings.
  *
- * @note The content of the type is verifyable by a CRC-value stored inside the struct.
+ * @note The content of the type is verifyable by a CRC-value stored inside the
+ * struct.
  *
- * @note The storage operation is an asynchronous progress. Success will be notified
- *       through system events raised by the SoftDevice.
+ * @note The storage operation is an asynchronous progress. Success will be
+ * notified through system events raised by the SoftDevice.
  *
- * @param[in]   p_adv_name  Structure holding information about the new advertisement name.
+ * @param[in]   p_adv_name  Structure holding information about the new
+ * advertisement name.
  *
  * @retval  NRF_SUCCESS     Asynchronous operation was successfully started.
  * @retval  NRF_ERROR_NULL  p_adv_name was NULL.
  * @retval  Any other error code reported by SoftDevice API calls.
  */
-ret_code_t nrf_dfu_settings_adv_name_write(nrf_dfu_adv_name_t * p_adv_name);
-
+ret_code_t nrf_dfu_settings_adv_name_write(nrf_dfu_adv_name_t *p_adv_name);
 
 /** @brief Function for copying the advertisement name from DFU settings to RAM.
  *
@@ -175,8 +175,7 @@ ret_code_t nrf_dfu_settings_adv_name_write(nrf_dfu_adv_name_t * p_adv_name);
  * @retval  NRF_SUCCESS     Advertisement name was successfully copied.
  * @retval  NRF_ERROR_NULL  p_adv_name was NULL.
  */
-ret_code_t nrf_dfu_settings_adv_name_copy(nrf_dfu_adv_name_t * p_adv_name);
-
+ret_code_t nrf_dfu_settings_adv_name_copy(nrf_dfu_adv_name_t *p_adv_name);
 
 /** @brief Function for validating advertisement data in DFU settings.
  *
@@ -196,10 +195,12 @@ bool nrf_dfu_settings_adv_name_is_valid(void);
  */
 ret_code_t nrf_dfu_settings_additional_erase(void);
 
-/** @brief Function for resetting both init command and DFU transfer progress inside settings structure.
+/** @brief Function for resetting both init command and DFU transfer progress
+ * inside settings structure.
  *
  * @note    This function does not perform flash operation.
- *          In order to save the reset state, please use @ref nrf_dfu_settings_write function.
+ *          In order to save the reset state, please use @ref
+ * nrf_dfu_settings_write function.
  */
 void nrf_dfu_settings_progress_reset(void);
 

@@ -1,14 +1,15 @@
 /**
- * Copyright (c) 2016 - 2021 Nordic Semiconductor ASA and Luxoft Global Operations Gmbh.
+ * Copyright (c) 2016 - 2021 Nordic Semiconductor ASA and Luxoft Global
+ * Operations Gmbh.
  *
  * All Rights Reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -23,41 +24,44 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #ifndef MAC_MLME_ASSOCIATE_H_INCLUDED
 #define MAC_MLME_ASSOCIATE_H_INCLUDED
 
-#include <stdint.h>
 #include "mac_common.h"
 #include "mac_task_scheduler.h"
+#include <stdint.h>
 
 /** @file
- * The MAC Association module declares the MAC Association routines and necessary types/macros
- * according to the MAC specification.
+ * The MAC Association module declares the MAC Association routines and
+ * necessary types/macros according to the MAC specification.
  *
  * @defgroup mac_assoc MAC MLME Association API
  * @ingroup mac_15_4
  * @{
  * @brief Module to declare MAC MLME Association API.
- * @details The MLME Association module declares Association MAC routines and necessary macros/types according
- * to the MAC specification. More specifically, MLME Association request aka mlme_associate_req(),
- * MLME Association confirm callback typedef aka mlme_associate_conf_cb_t, MLME Association indication
- * as mlme_associate_ind(), and MLME Response aka mlme_associate_resp() primitives are declared.
+ * @details The MLME Association module declares Association MAC routines and
+ * necessary macros/types according to the MAC specification. More specifically,
+ * MLME Association request aka mlme_associate_req(), MLME Association confirm
+ * callback typedef aka mlme_associate_conf_cb_t, MLME Association indication as
+ * mlme_associate_ind(), and MLME Response aka mlme_associate_resp() primitives
+ * are declared.
  */
 
 /**
@@ -65,24 +69,22 @@
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.3.1.2.
  */
-#define ALTERNATE_PAN_COORDINATOR_BIT     (0)
-#define DEVICE_TYPE_BIT                   (1)
-#define POWER_SOURCE_BIT                  (2)
-#define RECEIVER_ON_WHEN_IDLE_BIT         (3)
-#define SECURITY_CAPABILITY_BIT           (6)
-#define ALLOCATE_ADDRESS_BIT              (7)
-
+#define ALTERNATE_PAN_COORDINATOR_BIT (0)
+#define DEVICE_TYPE_BIT (1)
+#define POWER_SOURCE_BIT (2)
+#define RECEIVER_ON_WHEN_IDLE_BIT (3)
+#define SECURITY_CAPABILITY_BIT (6)
+#define ALLOCATE_ADDRESS_BIT (7)
 
 /**
  * @brief Valid values of the Association Status field
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.3.2.3
  */
-typedef enum
-{
-    MAC_ASSOCIATION_SUCCESSFUL = 0,
-    MAC_PAN_AT_CAPACITY,
-    MAC_PAN_ACCESS_DENIED
+typedef enum {
+  MAC_ASSOCIATION_SUCCESSFUL = 0,
+  MAC_PAN_AT_CAPACITY,
+  MAC_PAN_ACCESS_DENIED
 } mac_association_status_t;
 
 /**
@@ -90,66 +92,62 @@ typedef enum
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.3.1.2.
  */
-typedef struct
-{
-    uint8_t   alternate_pan_coordinator  : 1;
-    uint8_t   device_type                : 1;
-    uint8_t   power_source               : 1;
-    uint8_t   rx_on_when_idle            : 1;
-    uint8_t   reserved                   : 2;
-    uint8_t   security_capability        : 1;
-    uint8_t   allocate_address           : 1;
+typedef struct {
+  uint8_t alternate_pan_coordinator : 1;
+  uint8_t device_type : 1;
+  uint8_t power_source : 1;
+  uint8_t rx_on_when_idle : 1;
+  uint8_t reserved : 2;
+  uint8_t security_capability : 1;
+  uint8_t allocate_address : 1;
 } mac_capability_t;
 
-/**@brief The Alternate PAN Coordinator subfield of the Capability Information field. */
-typedef enum
-{
-    MAC_CAP_CANNOT_BE_PAN_COORD = 0,  /**< Device is not capable of becoming
-                                           the PAN coordinator.*/
-    MAC_CAP_CAN_BE_PAN_COORD          /**< Device is capable of becoming
-                                           the PAN coordinator.*/
+/**@brief The Alternate PAN Coordinator subfield of the Capability Information
+ * field. */
+typedef enum {
+  MAC_CAP_CANNOT_BE_PAN_COORD = 0, /**< Device is not capable of becoming
+                                        the PAN coordinator.*/
+  MAC_CAP_CAN_BE_PAN_COORD         /**< Device is capable of becoming
+                                        the PAN coordinator.*/
 } mac_cap_alt_pan_coord_t;
 
 /**@brief The Device Type subfield of the Capability Information field. */
-typedef enum
-{
-    MAC_CAP_RFD_DEVICE = 0,           /**< Device is an RFD.*/
-    MAC_CAP_FFD_DEVICE                /**< Device is an FFD.*/
+typedef enum {
+  MAC_CAP_RFD_DEVICE = 0, /**< Device is an RFD.*/
+  MAC_CAP_FFD_DEVICE      /**< Device is an FFD.*/
 } mac_cap_device_type_t;
 
 /**@brief The Power Source subfield of the Capability Information field. */
-typedef enum
-{
-    MAC_CAP_BATTERY_POWERED = 0,      /**< Device is not AC-powered.*/
-    MAC_CAP_MAINS_POWERED             /**< Device is receiving power from the
-                                           alternating current mains.*/
+typedef enum {
+  MAC_CAP_BATTERY_POWERED = 0, /**< Device is not AC-powered.*/
+  MAC_CAP_MAINS_POWERED        /**< Device is receiving power from the
+                                    alternating current mains.*/
 } mac_cap_power_source_t;
 
-/**@brief The Receiver On When Idle subfield of the Capability Information field. */
-typedef enum
-{
-    MAC_CAP_RX_OFF_WHEN_IDLE = 0,     /**< Device conserves power during idle.*/
-    MAC_CAP_RX_ON_WHEN_IDLE           /**< Device does not disable its receiver
-                                           to conserve power during idle periods.*/
+/**@brief The Receiver On When Idle subfield of the Capability Information
+ * field. */
+typedef enum {
+  MAC_CAP_RX_OFF_WHEN_IDLE = 0, /**< Device conserves power during idle.*/
+  MAC_CAP_RX_ON_WHEN_IDLE       /**< Device does not disable its receiver
+                                     to conserve power during idle periods.*/
 } mac_cap_rx_when_idle_t;
 
-/**@brief The Security Capability subfield of the Capability Information field. */
-typedef enum
-{
-    MAC_CAP_CANNOT_SECURE = 0,        /**< Device does not support securing.*/
-    MAC_CAP_CAN_SECURE                /**< Device is capable of sending and receiving
-                                           cryptographically protected MAC frames.*/
+/**@brief The Security Capability subfield of the Capability Information field.
+ */
+typedef enum {
+  MAC_CAP_CANNOT_SECURE = 0, /**< Device does not support securing.*/
+  MAC_CAP_CAN_SECURE         /**< Device is capable of sending and receiving
+                                  cryptographically protected MAC frames.*/
 } mac_cap_secure_t;
 
 /**@brief The Allocate Address subfield of the Capability Information field. */
-typedef enum
-{
-    MAC_CAP_SHORT_ADDR_NOT_REQ = 0,   /**< The coordinator will not allocate a
-                                           16-bit short address as a result of
-                                           the association procedure.*/
-    MAC_CAP_SHORT_ADDR_REQ            /**< The coordinator will allocate a
-                                           16-bit short address as a result of
-                                           the association procedure.*/
+typedef enum {
+  MAC_CAP_SHORT_ADDR_NOT_REQ = 0, /**< The coordinator will not allocate a
+                                       16-bit short address as a result of
+                                       the association procedure.*/
+  MAC_CAP_SHORT_ADDR_REQ          /**< The coordinator will allocate a
+                                       16-bit short address as a result of
+                                       the association procedure.*/
 } mac_cap_allocate_addr_t;
 
 #if (CONFIG_ASSOCIATE_REQ_ENABLED == 1)
@@ -158,22 +156,21 @@ typedef enum
  * @brief   MLME-ASSOCIATE.confirm
  *
  * The MLME-ASSOCIATE.confirm primitive is generated by the initiating MLME and
- * issued to its next higher layer in response to an MLME-ASSOCIATE.request primitive.
+ * issued to its next higher layer in response to an MLME-ASSOCIATE.request
+ * primitive.
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.3.4.
  */
-typedef struct
-{
-    uint16_t                assoc_short_address;       /**< Association short 16-bit address. */
-    mac_status_t            status;                    /**< Status of operation. */
+typedef struct {
+  uint16_t assoc_short_address; /**< Association short 16-bit address. */
+  mac_status_t status;          /**< Status of operation. */
 #if (CONFIG_SECURE == 1)
-    uint8_t                 security_level;            /**< Security level. */
-    uint8_t                 key_id_mode;               /**< Key ID mode. */
-    uint64_t                key_source;                /**< Key source. */
-    uint8_t                 key_index;                 /**< Key index. */
+  uint8_t security_level; /**< Security level. */
+  uint8_t key_id_mode;    /**< Key ID mode. */
+  uint64_t key_source;    /**< Key source. */
+  uint8_t key_index;      /**< Key index. */
 #endif
 } mlme_associate_conf_t;
-
 
 /**
  * @brief   MLME-ASSOCIATE.request.
@@ -182,40 +179,38 @@ typedef struct
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.3.1.
  */
-typedef struct
-{
-    /** Do not edit this field. */
-    mac_abstract_req_t      service;
+typedef struct {
+  /** Do not edit this field. */
+  mac_abstract_req_t service;
 
-    /** Confirmation to this request. */
-    mlme_associate_conf_t   confirm;
+  /** Confirmation to this request. */
+  mlme_associate_conf_t confirm;
 
-    /**
-     * A total of 27 channels numbered 0 to 26.
-     * are available per channel page (section 6.1.2.1).
-     */
-    uint8_t                 logical_channel;
+  /**
+   * A total of 27 channels numbered 0 to 26.
+   * are available per channel page (section 6.1.2.1).
+   */
+  uint8_t logical_channel;
 
-    /**
-     * A total of 32 channel pages are available
-     * with channel pages 3 to 31 being reserved
-     * for future use (section 6.1.2.2).
-     */
+  /**
+   * A total of 32 channel pages are available
+   * with channel pages 3 to 31 being reserved
+   * for future use (section 6.1.2.2).
+   */
 #ifdef CONFIG_SUB_GHZ
-    uint8_t                 channel_page;              /**< Channel page. */
+  uint8_t channel_page; /**< Channel page. */
 #endif
-    mac_addr_mode_t         coord_addr_mode;           /**< Coordinator address mode. */
-    uint16_t                coord_pan_id;              /**< Coordinator PAN ID. */
-    mac_addr_t              coord_address;             /**< Coordinator address. */
-    mac_capability_t        capability_information;    /**< Capability information. */
+  mac_addr_mode_t coord_addr_mode;         /**< Coordinator address mode. */
+  uint16_t coord_pan_id;                   /**< Coordinator PAN ID. */
+  mac_addr_t coord_address;                /**< Coordinator address. */
+  mac_capability_t capability_information; /**< Capability information. */
 #if (CONFIG_SECURE == 1)
-    uint8_t                 security_level;            /**< Security level. */
-    uint8_t                 key_id_mode;               /**< Key ID mode. */
-    uint64_t                key_source;                /**< Key source. */
-    uint8_t                 key_index;                 /**< Key index. */
+  uint8_t security_level; /**< Security level. */
+  uint8_t key_id_mode;    /**< Key ID mode. */
+  uint64_t key_source;    /**< Key source. */
+  uint8_t key_index;      /**< Key index. */
 #endif
 } mlme_associate_req_t;
-
 
 #if (CONFIG_ASSOCIATE_IND_ENABLED == 1)
 /**
@@ -227,18 +222,16 @@ typedef struct
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.3.2.
  */
-typedef struct
-{
-    uint64_t                device_address;            /**< 64-bit IEEE address. */
-    uint8_t                 capability_information;    /**< Capability information. */
+typedef struct {
+  uint64_t device_address;        /**< 64-bit IEEE address. */
+  uint8_t capability_information; /**< Capability information. */
 #if (CONFIG_SECURE == 1)
-    uint8_t                 security_level;            /**< Security level. */
-    uint8_t                 key_id_mode;               /**< Key ID mode. */
-    uint64_t                key_source;                /**< Key source. */
-    uint8_t                 key_index;                 /**< Key index. */
+  uint8_t security_level; /**< Security level. */
+  uint8_t key_id_mode;    /**< Key ID mode. */
+  uint64_t key_source;    /**< Key source. */
+  uint8_t key_index;      /**< Key index. */
 #endif
 } mlme_associate_ind_t;
-
 
 /**
  * @brief   MLME-ASSOCIATE.response.
@@ -248,16 +241,15 @@ typedef struct
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.3.3.
  */
-typedef struct
-{
-    uint64_t                 device_address;            /**< 64-bit IEEE address. */
-    uint16_t                 assoc_short_address;       /**< Association short 16-bit address. */
-    mac_association_status_t status;                    /**< Status of operation. */
+typedef struct {
+  uint64_t device_address;         /**< 64-bit IEEE address. */
+  uint16_t assoc_short_address;    /**< Association short 16-bit address. */
+  mac_association_status_t status; /**< Status of operation. */
 #if (CONFIG_SECURE == 1)
-    uint8_t                  security_level;            /**< Security level. */
-    uint8_t                  key_id_mode;               /**< Key ID mode. */
-    uint64_t                 key_source;                /**< Key source. */
-    uint8_t                  key_index;                 /**< Key index. */
+  uint8_t security_level; /**< Security level. */
+  uint8_t key_id_mode;    /**< Key ID mode. */
+  uint64_t key_source;    /**< Key source. */
+  uint8_t key_index;      /**< Key index. */
 #endif
 } mlme_associate_resp_t;
 
@@ -274,12 +266,12 @@ typedef struct
  * Otherwise, the status parameter indicates either an error code from
  * the received association response command or the appropriate error
  * code from Table 50.
- * The status values are fully described in 7.1.3.1.3 and subclauses referenced by 7.1.3.1.3.
+ * The status values are fully described in 7.1.3.1.3 and subclauses referenced
+ * by 7.1.3.1.3.
  *
  * @param Pointer to confirmation primitive.
  */
-typedef void (* mlme_associate_conf_cb_t)(mlme_associate_conf_t *);
-
+typedef void (*mlme_associate_conf_cb_t)(mlme_associate_conf_t *);
 
 /**
  * @brief   MLME-ASSOCIATE request.
@@ -293,8 +285,8 @@ typedef void (* mlme_associate_conf_cb_t)(mlme_associate_conf_t *);
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.3.5
  */
-void mlme_associate_req(mlme_associate_req_t * req, mlme_associate_conf_cb_t conf_cb);
-
+void mlme_associate_req(mlme_associate_req_t *req,
+                        mlme_associate_conf_cb_t conf_cb);
 
 #if (CONFIG_ASSOCIATE_IND_ENABLED == 1)
 
@@ -310,22 +302,21 @@ void mlme_associate_req(mlme_associate_req_t * req, mlme_associate_conf_cb_t con
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.3.5.
  */
-extern void mlme_associate_ind(mlme_associate_ind_t * ind);
-
+extern void mlme_associate_ind(mlme_associate_ind_t *ind);
 
 /**
  * @brief   MLME-ASSOCIATE response.
  *
- * @details Respond to an association with a PAN and issue to its MLME in order to
- * respond to the MLME-ASSOCIATE.indication.
- * Response structure passed as a parameter to this function must be retained
- * in memory until the related MLME-COMM-STATUS.indication is received.
+ * @details Respond to an association with a PAN and issue to its MLME in order
+ * to respond to the MLME-ASSOCIATE.indication. Response structure passed as a
+ * parameter to this function must be retained in memory until the related
+ * MLME-COMM-STATUS.indication is received.
  *
  * @param resp  MLME_ASSOCIATE response structure.
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.3.5.
  */
-void mlme_associate_resp(mlme_associate_resp_t * resp);
+void mlme_associate_resp(mlme_associate_resp_t *resp);
 
 #endif // (CONFIG_ASSOCIATE_IND_ENABLED == 1)
 

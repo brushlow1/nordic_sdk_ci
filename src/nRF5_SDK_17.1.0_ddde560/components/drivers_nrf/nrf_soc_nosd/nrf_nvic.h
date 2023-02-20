@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,26 +22,27 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #ifndef NRF_NVIC_H__
 #define NRF_NVIC_H__
 
-#include <stdint.h>
 #include "nrf.h"
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -79,7 +80,7 @@ uint32_t sd_nvic_DisableIRQ(IRQn_Type IRQn);
  *
  * @retval ::NRF_SUCCESS The interrupt is available for the application.
  */
-uint32_t sd_nvic_GetPendingIRQ(IRQn_Type IRQn, uint32_t * p_pending_irq);
+uint32_t sd_nvic_GetPendingIRQ(IRQn_Type IRQn, uint32_t *p_pending_irq);
 
 /**@brief  Set Pending Interrupt.
  * @note Corresponds to NVIC_SetPendingIRQ in CMSIS.
@@ -112,7 +113,8 @@ uint32_t sd_nvic_ClearPendingIRQ(IRQn_Type IRQn);
  * @param[in] IRQn      See the NVIC_SetPriority documentation in CMSIS.
  * @param[in] priority  A valid IRQ priority for use by the application.
  *
- * @retval ::NRF_SUCCESS The interrupt and priority level is available for the application.
+ * @retval ::NRF_SUCCESS The interrupt and priority level is available for the
+ * application.
  */
 uint32_t sd_nvic_SetPriority(IRQn_Type IRQn, uint32_t priority);
 
@@ -126,7 +128,7 @@ uint32_t sd_nvic_SetPriority(IRQn_Type IRQn, uint32_t priority);
  *
  * @retval ::NRF_SUCCESS The interrupt priority is returned in p_priority.
  */
-uint32_t sd_nvic_GetPriority(IRQn_Type IRQn, uint32_t * p_priority);
+uint32_t sd_nvic_GetPriority(IRQn_Type IRQn, uint32_t *p_priority);
 
 /**@brief System Reset.
  * @note Corresponds to NVIC_SystemReset in CMSIS.
@@ -145,19 +147,21 @@ uint32_t sd_nvic_SystemReset(void);
  *
  * @retval ::NRF_SUCCESS
  */
-uint32_t sd_nvic_critical_region_enter(uint8_t * p_is_nested_critical_region);
+uint32_t sd_nvic_critical_region_enter(uint8_t *p_is_nested_critical_region);
 
 /**@brief Exit critical region.
  *
- * @pre Application has entered a critical region using ::sd_nvic_critical_region_enter.
- * @post If not in a nested critical region, the application interrupts will restored to the state before ::sd_nvic_critical_region_enter was called.
+ * @pre Application has entered a critical region using
+ * ::sd_nvic_critical_region_enter.
+ * @post If not in a nested critical region, the application interrupts will
+ * restored to the state before ::sd_nvic_critical_region_enter was called.
  *
- * @param[in] is_nested_critical_region If this is set to 1, the critical region won't be exited. @sa sd_nvic_critical_region_enter.
+ * @param[in] is_nested_critical_region If this is set to 1, the critical region
+ * won't be exited. @sa sd_nvic_critical_region_enter.
  *
  * @retval ::NRF_SUCCESS
  */
 uint32_t sd_nvic_critical_region_exit(uint8_t is_nested_critical_region);
-
 
 #ifdef __cplusplus
 }

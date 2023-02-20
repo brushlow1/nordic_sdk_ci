@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -58,27 +59,23 @@
 #include <stddef.h>
 #include <stdint.h>
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 /**
  * Length of SHA-256 hash.
  */
 #define ocrypto_sha256_BYTES (32)
 
-
 /**@cond */
 typedef struct {
-    uint32_t h[8];
-    uint8_t  padded[64];
-    uint32_t length;
-    size_t   bytes;
+  uint32_t h[8];
+  uint8_t padded[64];
+  uint32_t length;
+  size_t bytes;
 } ocrypto_sha256_ctx;
 /**@endcond */
-
 
 /**@name Incremental SHA-256 generator
  *
@@ -93,8 +90,7 @@ typedef struct {
  *
  * @param[out] ctx Generator state.
  */
-void ocrypto_sha256_init(
-    ocrypto_sha256_ctx *ctx);
+void ocrypto_sha256_init(ocrypto_sha256_ctx *ctx);
 
 /**
  * SHA-256 incremental data input.
@@ -108,11 +104,11 @@ void ocrypto_sha256_init(
  * @param      in_len Length of @p in.
  *
  * @remark Initialization of the generator state @p ctx through
- *         @c ocrypto_sha256_init is required before this function can be called.
+ *         @c ocrypto_sha256_init is required before this function can be
+ * called.
  */
-void ocrypto_sha256_update(
-    ocrypto_sha256_ctx *ctx,
-    const uint8_t *in, size_t in_len);
+void ocrypto_sha256_update(ocrypto_sha256_ctx *ctx, const uint8_t *in,
+                           size_t in_len);
 
 /**
  * SHA-256 output.
@@ -124,29 +120,29 @@ void ocrypto_sha256_update(
  * @param[out] r   Generated hash value.
  *
  * @remark Initialization of the generator state @p ctx through
- *         @c ocrypto_sha256_init is required before this function can be called.
+ *         @c ocrypto_sha256_init is required before this function can be
+ * called.
  *
  * @remark After return, the generator state @p ctx must no longer be used with
  *         @c ocrypto_sha256_update and @c ocrypto_sha256_final unless it is
  *         reinitialized using @c ocrypto_sha256_init.
  */
-void ocrypto_sha256_final(
-    ocrypto_sha256_ctx *ctx,
-    uint8_t r[ocrypto_sha256_BYTES]);
+void ocrypto_sha256_final(ocrypto_sha256_ctx *ctx,
+                          uint8_t r[ocrypto_sha256_BYTES]);
 /**@}*/
 
 /**
  * SHA-256 hash.
  *
- * The SHA-256 hash of a given input message @p in is computed and put into @p r.
+ * The SHA-256 hash of a given input message @p in is computed and put into @p
+ * r.
  *
  * @param[out] r      Generated hash.
  * @param      in     Input data.
  * @param      in_len Length of @p in.
  */
-void ocrypto_sha256(
-    uint8_t r[ocrypto_sha256_BYTES],
-    const uint8_t *in, size_t in_len);
+void ocrypto_sha256(uint8_t r[ocrypto_sha256_BYTES], const uint8_t *in,
+                    size_t in_len);
 
 #ifdef __cplusplus
 }
@@ -155,4 +151,3 @@ void ocrypto_sha256(
 #endif /* #ifndef OCRYPTO_SHA256_H */
 
 /** @} */
-

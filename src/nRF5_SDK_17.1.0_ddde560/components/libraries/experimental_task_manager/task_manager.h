@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,31 +22,31 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #ifndef __TASK_MANAGER_H__
 #define __TASK_MANAGER_H__
 
-
 /**
-* @defgroup task_manager Task manager (Cooperative Scheduler)
-* @{
-* @ingroup app_common
-* @brief Functions for managing tasks
-*/
+ * @defgroup task_manager Task manager (Cooperative Scheduler)
+ * @{
+ * @ingroup app_common
+ * @brief Functions for managing tasks
+ */
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -59,7 +59,7 @@ extern "C" {
 #endif
 
 /**@brief Main function of the task. */
-typedef void (* task_main_t)(void * p_context);
+typedef void (*task_main_t)(void *p_context);
 
 /**@brief Task ID */
 typedef uint8_t task_id_t;
@@ -69,13 +69,14 @@ typedef uint8_t task_id_t;
 
 /**@brief Start task manager.
  *
- * @details This function starts the task manager and configures given function as idle task.
- *          This function never returns.
+ * @details This function starts the task manager and configures given function
+ * as idle task. This function never returns.
  *
- * @param[in]   idle_task           Main function of the task scheduled when no other tasks could be run.
+ * @param[in]   idle_task           Main function of the task scheduled when no
+ * other tasks could be run.
  * @param[in]   p_idle_task_context Context passed to idle task.
  */
-void task_manager_start(task_main_t idle_task, void * p_idle_task_context);
+void task_manager_start(task_main_t idle_task, void *p_idle_task_context);
 
 /**@brief Create new task.
  *
@@ -85,7 +86,8 @@ void task_manager_start(task_main_t idle_task, void * p_idle_task_context);
  *
  * @return      ID of the task on success, otherwise TASK_ID_INVALID.
  */
-task_id_t task_create(task_main_t task, char const * p_task_name, void * p_context);
+task_id_t task_create(task_main_t task, char const *p_task_name,
+                      void *p_context);
 
 /**@brief Yield CPU to other tasks.
  */
@@ -115,7 +117,8 @@ void task_events_set(task_id_t task_id, uint32_t evt_mask);
 
 /**@brief Returns maximum depth of task stack.
  *
- * @param[in] task_id Id of the task (use @ref TASK_ID_INVALID for current task).
+ * @param[in] task_id Id of the task (use @ref TASK_ID_INVALID for current
+ * task).
  * @return Number of bytes ever used on task stack.
  */
 uint32_t task_stack_max_usage_get(task_id_t task_id);
@@ -132,8 +135,7 @@ task_id_t task_id_get(void);
  * @return      Task name
  *
  */
-char const * task_name_get(task_id_t task_id);
-
+char const *task_name_get(task_id_t task_id);
 
 #ifdef __cplusplus
 }

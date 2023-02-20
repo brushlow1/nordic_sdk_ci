@@ -24,24 +24,26 @@
 
 /**@brief Prescaler value for timer module to get a tick of about 1 ms.
  *
- * @note Applications using lwIP and this driver, must use this value of prescaler when
- *       initializing the timer module.
+ * @note Applications using lwIP and this driver, must use this value of
+ * prescaler when initializing the timer module.
  */
-#define NRF_DRIVER_TIMER_PRESCALER    31
+#define NRF_DRIVER_TIMER_PRESCALER 31
 
 /**@brief Initializes the driver for LwIP stack. */
 uint32_t nrf_driver_init(void);
 
-/**@brief API assumed to be implemented by the application to handle interface up event.
+/**@brief API assumed to be implemented by the application to handle interface
+ * up event.
  *
  * @param[in] p_interface Identifies the interface.
  */
-extern void nrf_driver_interface_up(iot_interface_t const * p_interface);
+extern void nrf_driver_interface_up(iot_interface_t const *p_interface);
 
-/**@brief API assumed to be implemented by the application to handle interface down event.
+/**@brief API assumed to be implemented by the application to handle interface
+ * down event.
  *
  * @param[in] p_interface Identifies the interface.
  */
-extern void nrf_driver_interface_down(iot_interface_t const * p_interface);
+extern void nrf_driver_interface_down(iot_interface_t const *p_interface);
 
-#endif //NRF_PLATFORM_PORT_H__
+#endif // NRF_PLATFORM_PORT_H__

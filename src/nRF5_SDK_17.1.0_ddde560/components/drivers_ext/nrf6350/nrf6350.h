@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #ifndef NRF6350_H_
@@ -47,20 +48,19 @@
 extern "C" {
 #endif
 
-#define LCD_LLEN 16                //!< LCD Line length
+#define LCD_LLEN 16 //!< LCD Line length
 
-#define JS_BUTTON_NONE      0x00   //!< Joystick not touched
-#define JS_BUTTON_LEFT      0x01   //!< joystick pulled left
-#define JS_BUTTON_PUSH      0x02   //!< joystick pushed
-#define JS_BUTTON_DOWN      0x04   //!< joystick pulled down
-#define JS_BUTTON_UP        0x08   //!< joystick pulled up
-#define JS_BUTTON_RIGHT     0x10   //!< joystick pulled right
-#define LCD_UPPER_LINE      0x00   //!< LCD upper line
-#define LCD_LOWER_LINE      0x40   //!< LCD lower line
-#define LCD_CONTRAST_LOW    0x00   //!< LCD Low contrast
-#define LCD_CONTRAST_MEDIUM 0x02   //!< LCD Medium contrast
-#define LCD_CONTRAST_HIGH   0x08   //!< LCD High contrast
-
+#define JS_BUTTON_NONE 0x00      //!< Joystick not touched
+#define JS_BUTTON_LEFT 0x01      //!< joystick pulled left
+#define JS_BUTTON_PUSH 0x02      //!< joystick pushed
+#define JS_BUTTON_DOWN 0x04      //!< joystick pulled down
+#define JS_BUTTON_UP 0x08        //!< joystick pulled up
+#define JS_BUTTON_RIGHT 0x10     //!< joystick pulled right
+#define LCD_UPPER_LINE 0x00      //!< LCD upper line
+#define LCD_LOWER_LINE 0x40      //!< LCD lower line
+#define LCD_CONTRAST_LOW 0x00    //!< LCD Low contrast
+#define LCD_CONTRAST_MEDIUM 0x02 //!< LCD Medium contrast
+#define LCD_CONTRAST_HIGH 0x08   //!< LCD High contrast
 
 /**
  * @brief Function for initializing the LCD display prior to writing.
@@ -81,7 +81,8 @@ bool nrf6350_lcd_init(void);
  * @retval true Write succeeded
  * @retval false Write failed
  */
-bool nrf6350_lcd_write_string(const char *p_text, uint8_t size, uint8_t line, uint8_t pos);
+bool nrf6350_lcd_write_string(const char *p_text, uint8_t size, uint8_t line,
+                              uint8_t pos);
 
 /**
  * @brief Function for clearing the contents of the LCD-display.
@@ -141,14 +142,14 @@ bool nrf6350_js_get_value(int8_t *val);
  */
 bool nrf6350_js_get_status(uint8_t *js_state);
 
-/** @brief  Function for transferring data over TWI bus. Used the first time you want to communicate nRF6350 to bypass a fail.
+/** @brief  Function for transferring data over TWI bus. Used the first time you
+ * want to communicate nRF6350 to bypass a fail.
  */
 bool nrf6350_lcd_wake_up(void);
-
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif  // NRF6350_H_
+#endif // NRF6350_H_
 /** @} */

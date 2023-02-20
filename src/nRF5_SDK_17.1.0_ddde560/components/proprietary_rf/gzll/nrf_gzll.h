@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 /**
@@ -45,31 +46,29 @@
 #ifndef NRF_GZLL_H__
 #define NRF_GZLL_H__
 
-#include <stdbool.h>
 #include "nrf.h"
 #include "nrf_gzll_constants.h"
+#include <stdbool.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-
 /**
-* @defgroup gzll_02_api Gazell Link Layer
-* @{
-* @ingroup modules_01_gzll
-* @brief Gazell Link Layer Application Programming Interface (API).
-*/
+ * @defgroup gzll_02_api Gazell Link Layer
+ * @{
+ * @ingroup modules_01_gzll
+ * @brief Gazell Link Layer Application Programming Interface (API).
+ */
 
 /**
  * @enum nrf_gzll_mode_t
  * @brief Enumerator used for selecting Gazell mode.
  */
-typedef enum
-{
-    NRF_GZLL_MODE_DEVICE,  ///< Device mode
-    NRF_GZLL_MODE_HOST,    ///< Host mode
-    NRF_GZLL_MODE_SUSPEND, ///< Suspend mode ("disabled with timer running")
+typedef enum {
+  NRF_GZLL_MODE_DEVICE,  ///< Device mode
+  NRF_GZLL_MODE_HOST,    ///< Host mode
+  NRF_GZLL_MODE_SUSPEND, ///< Suspend mode ("disabled with timer running")
 } nrf_gzll_mode_t;
 
 /**
@@ -77,38 +76,41 @@ typedef enum
  * @brief Enumerator used for selecting Gazell Device channel
  * selection policy.
  */
-typedef enum
-{
-    NRF_GZLL_DEVICE_CHANNEL_SELECTION_POLICY_USE_SUCCESSFUL, ///< Start on previous successful channel
-    NRF_GZLL_DEVICE_CHANNEL_SELECTION_POLICY_USE_CURRENT,    ///< Start on channel currently monitored by Host
+typedef enum {
+  NRF_GZLL_DEVICE_CHANNEL_SELECTION_POLICY_USE_SUCCESSFUL, ///< Start on
+                                                           ///< previous
+                                                           ///< successful
+                                                           ///< channel
+  NRF_GZLL_DEVICE_CHANNEL_SELECTION_POLICY_USE_CURRENT,    ///< Start on channel
+                                                        ///< currently monitored
+                                                        ///< by Host
 } nrf_gzll_device_channel_selection_policy_t;
 
 /**
  * @enum nrf_gzll_tx_power_t
  * @brief Enumerator used for selecting the transmit (TX) power.
  */
-typedef enum
-{
-    NRF_GZLL_TX_POWER_4_DBM,   ///<  4 dBm transmit power.
-    NRF_GZLL_TX_POWER_0_DBM,   ///<  0 dBm transmit power.
-    NRF_GZLL_TX_POWER_N4_DBM,  ///< -4 dBm transmit power.
-    NRF_GZLL_TX_POWER_N8_DBM,  ///< -8 dBm transmit power.
-    NRF_GZLL_TX_POWER_N12_DBM, ///< -12 dBm transmit power.
-    NRF_GZLL_TX_POWER_N16_DBM, ///< -16 dBm transmit power.
-    NRF_GZLL_TX_POWER_N20_DBM  ///< -20 dBm transmit power.
+typedef enum {
+  NRF_GZLL_TX_POWER_4_DBM,   ///<  4 dBm transmit power.
+  NRF_GZLL_TX_POWER_0_DBM,   ///<  0 dBm transmit power.
+  NRF_GZLL_TX_POWER_N4_DBM,  ///< -4 dBm transmit power.
+  NRF_GZLL_TX_POWER_N8_DBM,  ///< -8 dBm transmit power.
+  NRF_GZLL_TX_POWER_N12_DBM, ///< -12 dBm transmit power.
+  NRF_GZLL_TX_POWER_N16_DBM, ///< -16 dBm transmit power.
+  NRF_GZLL_TX_POWER_N20_DBM  ///< -20 dBm transmit power.
 } nrf_gzll_tx_power_t;
 
 /**
  * @enum nrf_gzll_datarate_t
  * @brief Enumerator used for selecting the radio datarate.
  */
-typedef enum
-{
+typedef enum {
 #ifdef NRF51
-    NRF_GZLL_DATARATE_250KBIT = 0, ///<  250 Kbps datarate, available only for the nRF51.
+  NRF_GZLL_DATARATE_250KBIT =
+      0, ///<  250 Kbps datarate, available only for the nRF51.
 #endif
-    NRF_GZLL_DATARATE_1MBIT   = 1, ///<  1 Mbps datarate.
-    NRF_GZLL_DATARATE_2MBIT   = 2  ///<  2 Mbps datarate.
+  NRF_GZLL_DATARATE_1MBIT = 1, ///<  1 Mbps datarate.
+  NRF_GZLL_DATARATE_2MBIT = 2  ///<  2 Mbps datarate.
 } nrf_gzll_datarate_t;
 
 /**
@@ -117,36 +119,59 @@ typedef enum
  * external 16 MHz oscillator on/off shall be handled automatically
  * inside Gazell or manually by the application.
  */
-typedef enum
-{
-    NRF_GZLL_XOSC_CTL_AUTO,  ///< Switch XOSC on/off automatically
-    NRF_GZLL_XOSC_CTL_MANUAL ///< Switch XOSC on/off manually
+typedef enum {
+  NRF_GZLL_XOSC_CTL_AUTO,  ///< Switch XOSC on/off automatically
+  NRF_GZLL_XOSC_CTL_MANUAL ///< Switch XOSC on/off manually
 } nrf_gzll_xosc_ctl_t;
 
 /**
  * @enum nrf_gzll_error_code_t
  * @brief Enumerator used for error codes for Gazell API functions
  */
-typedef enum
-{
-    NRF_GZLL_ERROR_CODE_NO_ERROR                            =  0, ///< No error has been detected.
-    NRF_GZLL_ERROR_CODE_FAILED_TO_INITIALIZE                =  1, ///< The function NRF_GZLL_init failed.
-    NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_CONFIGURE_WHEN_ENABLED =  2, ///< A call to a configuration 'set' function was made while Gazell was enabled.
-    NRF_GZLL_ERROR_CODE_POINTER_IS_NULL                     =  3, ///< A null pointer was given as an input to a function.
-    NRF_GZLL_ERROR_CODE_INVALID_PIPE                        =  4, ///< An invalid pipe number was given as an input to a function.
-    NRF_GZLL_ERROR_CODE_INVALID_MODE                        =  5, ///< An invalid value for the nrf_gzll_mode_t enumerator was given as input to a function.
-    NRF_GZLL_ERROR_CODE_INVALID_PAYLOAD_LENGTH              =  6, ///< An invalid payload length was given as an input to a function.
-    NRF_GZLL_ERROR_CODE_INVALID_CHANNEL_TABLE_SIZE          =  7, ///< An invalid channel table size was given as an input to a function.
-    NRF_GZLL_ERROR_CODE_INSUFFICIENT_PACKETS_AVAILABLE      =  8, ///< There are insufficient packets in the Gazell memory pool to successfully execute the operation.
-    NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_ADD_TO_FULL_FIFO       =  9, ///< There is insufficient space in the TX FIFO for the data packet.
-    NRF_GZLL_ERROR_CODE_NO_SPACE_IN_RX_FIFO_FOR_ACK         = 10, ///< There is insufficient space in the RX FIFO for the ACK.
-    NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_FETCH_FROM_EMPTY_FIFO  = 11, ///< Attempted to fetch a packet from an empty FIFO. Use the functions nrf_gzll_get_tx_fifo_packet_count() or nrf_gzll_get_rx_fifo_packet_count()
-    NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_FLUSH_WHEN_ENABLED     = 12, ///< Attempted to fetch a packet from an empty FIFO. Use the functions nrf_gzll_get_tx_fifo_packet_count() or nrf_gzll_get_rx_fifo_packet_count()
-    NRF_GZLL_ERROR_CODE_INVALID_PARAMETER                   = 14, ///< Attempted to set a variable which was not valid.
-    NRF_GZLL_ERROR_CODE_INTERNAL_ASSERT_OCCURRED            = 15, ///< An internal assert occurred.
-    NRF_GZLL_ERROR_CODE_CALLBACK_NOT_IMPLEMENTED            = 16, ///< A callback was called but not implemented by the application.
-    NRF_GZLL_ERROR_CODE_INVALID_ADDRESS                     = 17, ///< Invalid pipe 0 address detected, see Anomaly 107 at nRF52832 errata document.
-    NRF_GZLL_ERROR_CODE_NUMBER_OF_ERROR_CODES               = 18, ///< Number of possible error codes.
+typedef enum {
+  NRF_GZLL_ERROR_CODE_NO_ERROR = 0, ///< No error has been detected.
+  NRF_GZLL_ERROR_CODE_FAILED_TO_INITIALIZE =
+      1, ///< The function NRF_GZLL_init failed.
+  NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_CONFIGURE_WHEN_ENABLED =
+      2, ///< A call to a configuration 'set' function was made while Gazell was
+         ///< enabled.
+  NRF_GZLL_ERROR_CODE_POINTER_IS_NULL =
+      3, ///< A null pointer was given as an input to a function.
+  NRF_GZLL_ERROR_CODE_INVALID_PIPE =
+      4, ///< An invalid pipe number was given as an input to a function.
+  NRF_GZLL_ERROR_CODE_INVALID_MODE =
+      5, ///< An invalid value for the nrf_gzll_mode_t enumerator was given as
+         ///< input to a function.
+  NRF_GZLL_ERROR_CODE_INVALID_PAYLOAD_LENGTH =
+      6, ///< An invalid payload length was given as an input to a function.
+  NRF_GZLL_ERROR_CODE_INVALID_CHANNEL_TABLE_SIZE =
+      7, ///< An invalid channel table size was given as an input to a function.
+  NRF_GZLL_ERROR_CODE_INSUFFICIENT_PACKETS_AVAILABLE =
+      8, ///< There are insufficient packets in the Gazell memory pool to
+         ///< successfully execute the operation.
+  NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_ADD_TO_FULL_FIFO =
+      9, ///< There is insufficient space in the TX FIFO for the data packet.
+  NRF_GZLL_ERROR_CODE_NO_SPACE_IN_RX_FIFO_FOR_ACK =
+      10, ///< There is insufficient space in the RX FIFO for the ACK.
+  NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_FETCH_FROM_EMPTY_FIFO =
+      11, ///< Attempted to fetch a packet from an empty FIFO. Use the functions
+          ///< nrf_gzll_get_tx_fifo_packet_count() or
+          ///< nrf_gzll_get_rx_fifo_packet_count()
+  NRF_GZLL_ERROR_CODE_ATTEMPTED_TO_FLUSH_WHEN_ENABLED =
+      12, ///< Attempted to fetch a packet from an empty FIFO. Use the functions
+          ///< nrf_gzll_get_tx_fifo_packet_count() or
+          ///< nrf_gzll_get_rx_fifo_packet_count()
+  NRF_GZLL_ERROR_CODE_INVALID_PARAMETER =
+      14, ///< Attempted to set a variable which was not valid.
+  NRF_GZLL_ERROR_CODE_INTERNAL_ASSERT_OCCURRED =
+      15, ///< An internal assert occurred.
+  NRF_GZLL_ERROR_CODE_CALLBACK_NOT_IMPLEMENTED =
+      16, ///< A callback was called but not implemented by the application.
+  NRF_GZLL_ERROR_CODE_INVALID_ADDRESS =
+      17, ///< Invalid pipe 0 address detected, see Anomaly 107 at nRF52832
+          ///< errata document.
+  NRF_GZLL_ERROR_CODE_NUMBER_OF_ERROR_CODES =
+      18, ///< Number of possible error codes.
 } nrf_gzll_error_code_t;
 
 /**
@@ -154,64 +179,71 @@ typedef enum
  * @brief Data structure containing information about the last packet
  *        transmission.
  */
-typedef struct
-{
-    bool     payload_received_in_ack;    ///< A payload was received in the ACK.
-    uint16_t num_tx_attempts;            ///< Number of attempts used on previous Device packet transmission.
-    uint16_t num_channel_switches;       ///< Number of channel switches needed during previous packet transmission.
-    int8_t   rssi;                       ///< Received signal strength indicator in dBm. @sa nrf_gzll_enable_rssi().
-    uint8_t  rf_channel;                 ///< Channel on which packet has been transmitted.
+typedef struct {
+  bool payload_received_in_ack;  ///< A payload was received in the ACK.
+  uint16_t num_tx_attempts;      ///< Number of attempts used on previous Device
+                                 ///< packet transmission.
+  uint16_t num_channel_switches; ///< Number of channel switches needed during
+                                 ///< previous packet transmission.
+  int8_t rssi;        ///< Received signal strength indicator in dBm. @sa
+                      ///< nrf_gzll_enable_rssi().
+  uint8_t rf_channel; ///< Channel on which packet has been transmitted.
 } nrf_gzll_device_tx_info_t;
-
 
 /**
  * @struct nrf_gzll_host_rx_info_t;
  * @brief Data structure containing information about the last packet
  *        received.
  */
-typedef struct
-{
-    bool    packet_removed_from_tx_fifo; ///< A payload was received in the ACK.
-    int8_t  rssi;                        ///< Received signal strength indicator in dBm. @sa nrf_gzll_enable_rssi().
-    uint8_t rf_channel;                  ///< Channel on which packet has been received.
+typedef struct {
+  bool packet_removed_from_tx_fifo; ///< A payload was received in the ACK.
+  int8_t rssi;        ///< Received signal strength indicator in dBm. @sa
+                      ///< nrf_gzll_enable_rssi().
+  uint8_t rf_channel; ///< Channel on which packet has been received.
 } nrf_gzll_host_rx_info_t;
 
-
-typedef struct 
-{
-    uint32_t packets_num;                                             ///< Number of succesfully transmitted packets 
-    uint32_t timeouts_num;                                            ///< Total timeouts number 
-    uint32_t channel_timeouts[NRF_GZLL_CONST_MAX_CHANNEL_TABLE_SIZE]; ///< Transmission timeouts per channel 
-    uint32_t channel_packets[NRF_GZLL_CONST_MAX_CHANNEL_TABLE_SIZE];  ///< Succesfully transmitted packets per channel 
+typedef struct {
+  uint32_t packets_num;  ///< Number of succesfully transmitted packets
+  uint32_t timeouts_num; ///< Total timeouts number
+  uint32_t
+      channel_timeouts[NRF_GZLL_CONST_MAX_CHANNEL_TABLE_SIZE]; ///< Transmission
+                                                               ///< timeouts per
+                                                               ///< channel
+  uint32_t channel_packets
+      [NRF_GZLL_CONST_MAX_CHANNEL_TABLE_SIZE]; ///< Succesfully transmitted
+                                               ///< packets per channel
 } nrf_gzll_tx_statistics_t;
-
 
 /**< Transmission timeout callback function definition */
 typedef void (*nrf_gzll_tx_timeout_callback)(uint32_t pipe, uint8_t rf_channel);
 
-
 /**< Transmission CRC failure callback function definition */
-typedef void (*nrf_gzll_crc_failure_callback)(uint32_t pipe, uint8_t rf_channel);
-
+typedef void (*nrf_gzll_crc_failure_callback)(uint32_t pipe,
+                                              uint8_t rf_channel);
 
 #if defined(NRF52_SERIES) || defined(__SDK_DOXYGEN__)
 /**
  * @brief Data structure holding external front
  *        end control configuration.
  */
-typedef struct
-{
-    bool             pa_enabled;                                     ///< Flag indicating if PA control is enabled.
-    bool             pa_active_high;                                 ///< Flag indicating if PA is active in high input state.
-    uint8_t          pa_gpio_pin;                                    ///< Number of output pin used for PA control.
-    uint8_t          pa_gpiote_channel;                              ///< Number of GPIOTE channel used for PA control.
-    bool             lna_enabled;                                    ///< Flag indicating if LNA control is enabled.
-    bool             lna_active_high;                                ///< Flag indicating if LNA is active in high input state.
-    uint8_t          lna_gpio_pin;                                   ///< Number of output pin used for LNA control.
-    uint8_t          lna_gpiote_channel;                             ///< Number of GPIOTE channel used for LNA control.
-    NRF_TIMER_Type * timer;                                          ///< Pointer to the TIMER instance.
-    uint8_t          ppi_channels[NRF_GZLL_PA_LNA_PPI_CHANNELS_NUM]; ///< PPI channels used to control front end.
-    uint8_t          ramp_up_time;                                   ///< Determines how early should the PA/LNA be turned one before RADIO activity. Should be less than @ref NRF_GZLL_PA_LNA_MAX_RAMP_UP_TIME.
+typedef struct {
+  bool pa_enabled;     ///< Flag indicating if PA control is enabled.
+  bool pa_active_high; ///< Flag indicating if PA is active in high input state.
+  uint8_t pa_gpio_pin; ///< Number of output pin used for PA control.
+  uint8_t pa_gpiote_channel; ///< Number of GPIOTE channel used for PA control.
+  bool lna_enabled;          ///< Flag indicating if LNA control is enabled.
+  bool lna_active_high;      ///< Flag indicating if LNA is active in high input
+                             ///< state.
+  uint8_t lna_gpio_pin;      ///< Number of output pin used for LNA control.
+  uint8_t
+      lna_gpiote_channel; ///< Number of GPIOTE channel used for LNA control.
+  NRF_TIMER_Type *timer;  ///< Pointer to the TIMER instance.
+  uint8_t
+      ppi_channels[NRF_GZLL_PA_LNA_PPI_CHANNELS_NUM]; ///< PPI channels used to
+                                                      ///< control front end.
+  uint8_t ramp_up_time; ///< Determines how early should the PA/LNA be turned
+                        ///< one before RADIO activity. Should be less than @ref
+                        ///< NRF_GZLL_PA_LNA_MAX_RAMP_UP_TIME.
 } nrf_gzll_pa_lna_cfg_t;
 #endif
 
@@ -236,8 +268,8 @@ bool nrf_gzll_init(nrf_gzll_mode_t mode);
  * When enabled the behaviour described for the current Gazell Link Layer mode
  * will apply.
  *
- * @retval false if nrf_gzll_init has not previously been called or invalid address
- *               has been set - see Anomaly 107 at nRF52832 errata document.
+ * @retval false if nrf_gzll_init has not previously been called or invalid
+ * address has been set - see Anomaly 107 at nRF52832 errata document.
  */
 bool nrf_gzll_enable(void);
 
@@ -280,7 +312,8 @@ bool nrf_gzll_is_enabled(void);
  * @param tx_info struct used to indicate whether a payload was received in the
  * ack, as well as the number of TX attempts and channel switches required.
  */
-void nrf_gzll_device_tx_success(uint32_t pipe, nrf_gzll_device_tx_info_t tx_info);
+void nrf_gzll_device_tx_success(uint32_t pipe,
+                                nrf_gzll_device_tx_info_t tx_info);
 
 /**
  * @brief Transmission failed callback (Device mode only).
@@ -293,7 +326,8 @@ void nrf_gzll_device_tx_success(uint32_t pipe, nrf_gzll_device_tx_info_t tx_info
  * in the ack, as well as RSSI and the number of TX attempts and
  * channel switches required.
  */
-void nrf_gzll_device_tx_failed(uint32_t pipe, nrf_gzll_device_tx_info_t tx_info);
+void nrf_gzll_device_tx_failed(uint32_t pipe,
+                               nrf_gzll_device_tx_info_t tx_info);
 
 /** @} */
 
@@ -311,7 +345,8 @@ void nrf_gzll_device_tx_failed(uint32_t pipe, nrf_gzll_device_tx_info_t tx_info)
  * @param rx_info struct used to indicate whether a payload was removed from the
  * pipe's TX FIFO, as well as RSSI.
  */
-void nrf_gzll_host_rx_data_ready(uint32_t pipe, nrf_gzll_host_rx_info_t rx_info);
+void nrf_gzll_host_rx_data_ready(uint32_t pipe,
+                                 nrf_gzll_host_rx_info_t rx_info);
 
 /** @} */
 
@@ -350,33 +385,40 @@ void nrf_gzll_mode_changed(void);
  * In Device mode, the packet will be added.
  * In Host mode, the payload will be piggybacked onto an ACK.
  *
- * @param pipe      Pipe to which to add the payload. This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ * @param pipe      Pipe to which to add the payload. This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  * @param p_payload Pointer to the payload.
  * @param length    Number of bytes of the payload to transmit
  *                  (0 to NRF_GZLL_CONST_MAX_PAYLOAD_LENGTH).
  *
  * @retval true  if the packet was successfully added to the TX FIFO.
- * @retval false if unsuccessful, check nrf_gzll_error_code_t for more information.
+ * @retval false if unsuccessful, check nrf_gzll_error_code_t for more
+ * information.
  */
-bool nrf_gzll_add_packet_to_tx_fifo(uint32_t pipe, uint8_t * p_payload, uint32_t length);
+bool nrf_gzll_add_packet_to_tx_fifo(uint32_t pipe, uint8_t *p_payload,
+                                    uint32_t length);
 
 /**
  * @brief Fetch a packet from the head of the RX FIFO.
  *
- * @param pipe      Pipe from which to fetch the payload. This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ * @param pipe      Pipe from which to fetch the payload. This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  * @param p_payload Pointer to copy the payload to.
  * @param p_length  Length must be at least as large as the the number of bytes
  *                  in the received payload length.
  *
  * @retval true  If the fetch was successful.
- * @retval false If unsuccessful, check nrf_gzll_error_code_t for more information.
+ * @retval false If unsuccessful, check nrf_gzll_error_code_t for more
+ * information.
  */
-bool nrf_gzll_fetch_packet_from_rx_fifo(uint32_t pipe, uint8_t * p_payload, uint32_t * p_length);
+bool nrf_gzll_fetch_packet_from_rx_fifo(uint32_t pipe, uint8_t *p_payload,
+                                        uint32_t *p_length);
 
 /**
  * @brief Get the number of packets in the TX FIFO on a specific pipe.
  *
- * @param pipe The pipe for which to check. This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ * @param pipe The pipe for which to check. This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  *
  * @retval >=0 The number of packets in the TX FIFO for the pipe.
  * @retval -1  If the pipe number is invalid.
@@ -386,7 +428,8 @@ int32_t nrf_gzll_get_tx_fifo_packet_count(uint32_t pipe);
 /**
  * @brief Get the number of packets in the RX FIFO on a specific pipe.
  *
- * @param pipe  The pipe for which to check. This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ * @param pipe  The pipe for which to check. This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  * @retval >=0  The number of packets in the RX FIFO for the pipe.
  * @retval -1   If the pipe number is invalid.
  */
@@ -408,7 +451,8 @@ uint32_t nrf_gzll_get_total_allocated_packet_count(void);
  * Checks if there is another space in the pipe's TX and RX FIFOs
  * as well as enough overall space in the packet pool.
  *
- * @param pipe The pip for which to check. This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ * @param pipe The pip for which to check. This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  *
  * @retval true  If there is another space.
  * @retval false If there is not enough space, or the pipe is invalid.
@@ -424,7 +468,8 @@ bool nrf_gzll_ok_to_add_packet_to_tx_fifo(uint32_t pipe);
  * Note that it is not allowed to flush a TX FIFO when
  * Gazell is enabled.
  *
- * @param pipe is the pipe for which to flush. This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ * @param pipe is the pipe for which to flush. This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  * @retval true if the pipe was flushed.
  * @retval false if the pipe was not flushed.
  */
@@ -436,7 +481,8 @@ bool nrf_gzll_flush_tx_fifo(uint32_t pipe);
  * Delete all the packets and free the memory of the RX FIFO for a
  * specific pipe.
  *
- * @param pipe is the pipe for which to flush. This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ * @param pipe is the pipe for which to flush. This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  * @retval true if the pipe was flushed.
  * @retval false if the pipe was not flushed.
  */
@@ -449,7 +495,7 @@ bool nrf_gzll_flush_rx_fifo(uint32_t pipe);
  *
  * @return True if channel statistics has been enabled, false otherwise.
  */
-bool nrf_gzll_tx_statistics_enable(nrf_gzll_tx_statistics_t * p_statistics);
+bool nrf_gzll_tx_statistics_enable(nrf_gzll_tx_statistics_t *p_statistics);
 
 /**
  * @brief Function for disabling transmission statistics.
@@ -457,8 +503,9 @@ bool nrf_gzll_tx_statistics_enable(nrf_gzll_tx_statistics_t * p_statistics);
 void nrf_gzll_tx_statistics_disable(void);
 
 /**
- * @brief Function for obtaining number of transmission timeouts for specific channel.
- * 
+ * @brief Function for obtaining number of transmission timeouts for specific
+ * channel.
+ *
  * @param[in]  channel_index Channel index in channel table.
  * @param[out] p_timeouts    Pointer for the result.
  *
@@ -476,8 +523,8 @@ void nrf_gzll_reset_tx_statistics(void);
 /******************************************************************************/
 /** @name Configuration functions
  *
- * Configuration 'set' functions may only be called while Gazell is disabled. The
- * new parameter comes into effect when Gazell is enabled again.
+ * Configuration 'set' functions may only be called while Gazell is disabled.
+ * The new parameter comes into effect when Gazell is enabled again.
  *
  * Configuration 'get' functions may be called at any time.
  *
@@ -485,16 +532,18 @@ void nrf_gzll_reset_tx_statistics(void);
 /******************************************************************************/
 
 /**
- * @brief Function for registering callback to be called on the transmission timeout.
+ * @brief Function for registering callback to be called on the transmission
+ * timeout.
  */
-void nrf_gzll_tx_timeout_callback_register(nrf_gzll_tx_timeout_callback callback);
-
+void nrf_gzll_tx_timeout_callback_register(
+    nrf_gzll_tx_timeout_callback callback);
 
 /**
- * @brief Function for registering callback to be called on the packet CRC failure.
+ * @brief Function for registering callback to be called on the packet CRC
+ * failure.
  */
-void nrf_gzll_crc_failure_callback_register(nrf_gzll_crc_failure_callback callback);
-
+void nrf_gzll_crc_failure_callback_register(
+    nrf_gzll_crc_failure_callback callback);
 
 /**
  * @brief Set the mode.
@@ -521,8 +570,8 @@ nrf_gzll_mode_t nrf_gzll_get_mode(void);
 /**
  * @brief Set the base address for pipe 0.
  *
- * The full on-air address for each pipe is composed of a multi-byte base address
- * prepended to a prefix byte.
+ * The full on-air address for each pipe is composed of a multi-byte base
+ * address prepended to a prefix byte.
  *
  * For packets to be received correctly, the most significant byte of
  * the base address should not be an alternating sequence of 0s and 1s i.e.
@@ -579,13 +628,15 @@ uint32_t nrf_gzll_get_base_address_1(void);
  * @retval true  If the parameter was set.
  * @retval false If Gazell was enabled, or if the pipe was invalid.
  */
-bool nrf_gzll_set_address_prefix_byte(uint32_t pipe, uint8_t address_prefix_byte);
+bool nrf_gzll_set_address_prefix_byte(uint32_t pipe,
+                                      uint8_t address_prefix_byte);
 
 /**
  * @brief Get function counterpart to nrf_gzll_set_address_prefix_byte().
  *
  * @param pipe                      The pipe for which to get the address.
- *                                  This value must be < NRF_GZLL_CONST_PIPE_COUNT.
+ *                                  This value must be <
+ * NRF_GZLL_CONST_PIPE_COUNT.
  * @param p_out_address_prefix_byte The pointer in which to return the
  *                                  address prefix byte.
  *
@@ -593,7 +644,8 @@ bool nrf_gzll_set_address_prefix_byte(uint32_t pipe, uint8_t address_prefix_byte
  * @retval false If Gazell was enabled, the pipe was invalid or
  *               out_address was a NULL pointer.
  */
-bool nrf_gzll_get_address_prefix_byte(uint32_t pipe, uint8_t * p_out_address_prefix_byte);
+bool nrf_gzll_get_address_prefix_byte(uint32_t pipe,
+                                      uint8_t *p_out_address_prefix_byte);
 
 /**
  * @brief Set which pipes shall listen for packets in Host mode.
@@ -659,20 +711,23 @@ uint32_t nrf_gzll_get_timeslot_period(void);
  *
  * @arg NRF_GZLL_DEVICE_CHANNEL_SELECTION_POLICY_USE_CURRENT specifies that
  * Gazell shall transmit on the channel that is currently being monitored by the
- * Host. This parameter is only used when Gazell is "in sync". When "out of" sync,
- * Gazell will always start using the "previous successful" channel.
+ * Host. This parameter is only used when Gazell is "in sync". When "out of"
+ * sync, Gazell will always start using the "previous successful" channel.
  *
  * @retval true  If the parameter was set.
  * @retval false If Gazell was enabled or the policy was invalid.
  */
-bool nrf_gzll_set_device_channel_selection_policy(nrf_gzll_device_channel_selection_policy_t policy);
+bool nrf_gzll_set_device_channel_selection_policy(
+    nrf_gzll_device_channel_selection_policy_t policy);
 
 /**
- * @brief Get function counterpart to nrf_gzll_set_device_channel_selection_policy().
+ * @brief Get function counterpart to
+ * nrf_gzll_set_device_channel_selection_policy().
  *
  * @return the Device channel selection policy.
  */
-nrf_gzll_device_channel_selection_policy_t nrf_gzll_get_device_channel_selection_policy(void);
+nrf_gzll_device_channel_selection_policy_t
+nrf_gzll_get_device_channel_selection_policy(void);
 
 /**
  * @brief Set the number of timeslots that Gazell shall
@@ -721,7 +776,8 @@ uint32_t nrf_gzll_get_timeslots_per_channel(void);
  * @retval true  If the parameter was set.
  * @retval false If Gazell was enabled.
  */
-bool nrf_gzll_set_timeslots_per_channel_when_device_out_of_sync(uint32_t timeslots);
+bool nrf_gzll_set_timeslots_per_channel_when_device_out_of_sync(
+    uint32_t timeslots);
 
 /**
  * @brief Get function counterpart to
@@ -786,7 +842,7 @@ uint16_t nrf_gzll_get_max_tx_attempts(void);
  * @retval false If Gazell was enabled, or the channel_table pointer was NULL,
  *               or the size was invalid.
  */
-bool nrf_gzll_set_channel_table(uint8_t * p_channel_table, uint32_t size);
+bool nrf_gzll_set_channel_table(uint8_t *p_channel_table, uint32_t size);
 
 /**
  * @brief Get the table of Radio Frequency (RF) channels.
@@ -800,7 +856,7 @@ bool nrf_gzll_set_channel_table(uint8_t * p_channel_table, uint32_t size);
  * @retval false If the channel_table pointer was NULL,
  *               or the size was not large enough.
  */
-bool nrf_gzll_get_channel_table(uint8_t * p_channel_table, uint32_t * p_size);
+bool nrf_gzll_get_channel_table(uint8_t *p_channel_table, uint32_t *p_size);
 
 /**
  * @brief Get the current channel table size.
@@ -816,7 +872,7 @@ uint32_t nrf_gzll_get_channel_table_size(void);
  *
  * @retval true  If the parameter was set.
  * @retval false If the TX power was invalid.
-*/
+ */
 bool nrf_gzll_set_tx_power(nrf_gzll_tx_power_t tx_power);
 
 /**
@@ -872,7 +928,8 @@ bool nrf_gzll_set_xosc_ctl(nrf_gzll_xosc_ctl_t xosc_ctl);
 nrf_gzll_xosc_ctl_t nrf_gzll_get_xosc_ctl(void);
 
 /**
- * @brief Set Gazell to disable automatically after a certain number of timeslot ticks.
+ * @brief Set Gazell to disable automatically after a certain number of timeslot
+ * ticks.
  *
  * @param num_ticks Number of timeslot ticks.
  *
@@ -885,7 +942,7 @@ void nrf_gzll_set_auto_disable(uint32_t num_ticks);
  *
  * @param p_pa_lna_cfg Pointer to the configuration struct.
  */
-bool nrf_gzll_set_pa_lna_cfg(nrf_gzll_pa_lna_cfg_t const * p_pa_lna_cfg);
+bool nrf_gzll_set_pa_lna_cfg(nrf_gzll_pa_lna_cfg_t const *p_pa_lna_cfg);
 #endif
 
 /**
@@ -917,7 +974,6 @@ void nrf_gzll_clear_tick_count(void);
  * @return The current error code.
  */
 nrf_gzll_error_code_t nrf_gzll_get_error_code(void);
-
 
 /**
  * @brief Reset the Gazell error code.

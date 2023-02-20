@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -44,8 +45,8 @@
  * @{
  * @brief Type declaration and APIs for the Chacha20 stream cipher algorithm.
  *
- * ChaCha20 is a stream cipher developed by Daniel J. Bernstein based on the 20-round cipher
- * Salsa20/20.
+ * ChaCha20 is a stream cipher developed by Daniel J. Bernstein based on the
+ * 20-round cipher Salsa20/20.
  *
  * A 256-bit key is expanded into 2^64 randomly accessible streams, each
  * containing 2^64 randomly accessible 64-byte (512-bit) blocks.
@@ -54,7 +55,8 @@
  * round, conjecturally increasing resistance to cryptanalysis, while
  * preserving - and often improving - time per round.
  *
- * @see [RFC 7539 - ChaCha20 and Poly1305 for IETF Protocols](http://tools.ietf.org/html/rfc7539)
+ * @see [RFC 7539 - ChaCha20 and Poly1305 for IETF
+ * Protocols](http://tools.ietf.org/html/rfc7539)
  * @see [The ChaCha family of stream ciphers](http://cr.yp.to/chacha.html)
  */
 
@@ -64,11 +66,9 @@
 #include <stddef.h>
 #include <stdint.h>
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 /**
  * Length of the encryption key.
@@ -79,7 +79,6 @@ extern "C" {
  * Maximum length of the nonce.
  */
 #define ocrypto_chacha20_NONCE_BYTES_MAX (12)
-
 
 /**
  * ChaCha20 cipher stream generator.
@@ -92,7 +91,8 @@ extern "C" {
  * @param[out] c     Generated cipher stream.
  * @param      c_len Length of @p c.
  * @param      n     Nonce.
- * @param      n_len Nonce length. 0 <= @p n_len <= @c ocrypto_chacha20_NONCE_BYTES_MAX.
+ * @param      n_len Nonce length. 0 <= @p n_len <= @c
+ * ocrypto_chacha20_NONCE_BYTES_MAX.
  * @param      k     Encryption key.
  * @param      count Initial block counter.
  *
@@ -102,18 +102,17 @@ extern "C" {
  * @remark This function is equivalent to @c chacha20_stream_xor with a
  *         message @p m consisting of @p c_len zeroes.
  */
-void ocrypto_chacha20_stream(
-    uint8_t *c, size_t c_len,
-    const uint8_t *n, size_t n_len,
-    const uint8_t k[ocrypto_chacha20_KEY_BYTES],
-    uint32_t count);
+void ocrypto_chacha20_stream(uint8_t *c, size_t c_len, const uint8_t *n,
+                             size_t n_len,
+                             const uint8_t k[ocrypto_chacha20_KEY_BYTES],
+                             uint32_t count);
 
 /**
  * ChaCha20 cipher stream encoder.
  *
  * The message @p m is encrypted by applying the XOR operation with a pseudo
- * random cipher stream derived from the encryption key @p k, the nonce @p n, and
- * the initial block counter @p count.
+ * random cipher stream derived from the encryption key @p k, the nonce @p n,
+ * and the initial block counter @p count.
  *
  * Calling the function a second time with the generated ciphertext as input
  * message @p m decrypts it back to the original message.
@@ -122,7 +121,8 @@ void ocrypto_chacha20_stream(
  * @param      m     Input message.
  * @param      m_len Length of @p c and @p m.
  * @param      n     Nonce.
- * @param      n_len Nonce length. 0 <= @p n_len <= @c ocrypto_chacha20_NONCE_BYTES_MAX.
+ * @param      n_len Nonce length. 0 <= @p n_len <= @c
+ * ocrypto_chacha20_NONCE_BYTES_MAX.
  * @param      k     Encryption key.
  * @param      count Initial block counter.
  *
@@ -131,12 +131,10 @@ void ocrypto_chacha20_stream(
  * @remark When reusing an encryption key @p k for a different message @p m, a
  *         different nonce @p n or initial block counter @p count must be used.
  */
-void ocrypto_chacha20_stream_xor(
-    uint8_t *c,
-    const uint8_t *m, size_t m_len,
-    const uint8_t *n, size_t n_len,
-    const uint8_t k[ocrypto_chacha20_KEY_BYTES],
-    uint32_t count);
+void ocrypto_chacha20_stream_xor(uint8_t *c, const uint8_t *m, size_t m_len,
+                                 const uint8_t *n, size_t n_len,
+                                 const uint8_t k[ocrypto_chacha20_KEY_BYTES],
+                                 uint32_t count);
 
 #ifdef __cplusplus
 }
@@ -145,4 +143,3 @@ void ocrypto_chacha20_stream_xor(
 #endif /* #ifndef OCRYPTO_CHACHA20_H */
 
 /** @} */
-

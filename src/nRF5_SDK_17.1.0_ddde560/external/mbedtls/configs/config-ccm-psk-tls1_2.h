@@ -60,7 +60,7 @@
 #define MBEDTLS_CONFIG_H
 
 /* System support */
-//#define MBEDTLS_HAVE_TIME /* Optionally used in Hello messages */
+// #define MBEDTLS_HAVE_TIME /* Optionally used in Hello messages */
 /* Other MBEDTLS_HAVE_XXX flags irrelevant for this configuration */
 
 /* mbed TLS feature support */
@@ -84,7 +84,7 @@
 #define MBEDTLS_AES_ROM_TABLES
 
 /* Save some RAM by adjusting to your exact needs */
-#define MBEDTLS_PSK_MAX_LEN    16 /* 128-bits keys are generally enough */
+#define MBEDTLS_PSK_MAX_LEN 16 /* 128-bits keys are generally enough */
 
 /*
  * You should adjust this to the exact number of sources you're using: default
@@ -97,16 +97,15 @@
  * Use only CCM_8 ciphersuites, and
  * save ROM and a few bytes of RAM by specifying our own ciphersuite list
  */
-#define MBEDTLS_SSL_CIPHERSUITES                        \
-        MBEDTLS_TLS_PSK_WITH_AES_256_CCM_8,             \
-        MBEDTLS_TLS_PSK_WITH_AES_128_CCM_8
+#define MBEDTLS_SSL_CIPHERSUITES                                               \
+  MBEDTLS_TLS_PSK_WITH_AES_256_CCM_8, MBEDTLS_TLS_PSK_WITH_AES_128_CCM_8
 
 /*
  * Save RAM at the expense of interoperability: do this only if you control
  * both ends of the connection!  (See comments in "mbedtls/ssl.h".)
  * The optimal size here depends on the typical size of records.
  */
-#define MBEDTLS_SSL_MAX_CONTENT_LEN             1024
+#define MBEDTLS_SSL_MAX_CONTENT_LEN 1024
 
 #include "mbedtls/check_config.h"
 

@@ -9,54 +9,54 @@
  * The following section provides configuration for the name translation.
  * It must be modified to reflect the actual configuration set in NRF_SPU.
  */
-#define NRF_CLOCK      NRF_CLOCK_S
-#define NRF_DPPIC      NRF_DPPIC_S
-#define NRF_EGU0       NRF_EGU0_S
-#define NRF_EGU1       NRF_EGU1_S
-#define NRF_EGU2       NRF_EGU2_S
-#define NRF_EGU3       NRF_EGU3_S
-#define NRF_EGU4       NRF_EGU4_S
-#define NRF_EGU5       NRF_EGU5_S
-#define NRF_FPU        NRF_FPU_S
-#define NRF_P0         NRF_P0_S
-#define NRF_I2S        NRF_I2S_S
-#define NRF_KMU        NRF_KMU_S
-#define NRF_NVMC       NRF_NVMC_S
-#define NRF_PDM        NRF_PDM_S
-#define NRF_POWER      NRF_POWER_S
-#define NRF_PWM0       NRF_PWM0_S
-#define NRF_PWM1       NRF_PWM1_S
-#define NRF_PWM2       NRF_PWM2_S
-#define NRF_PWM3       NRF_PWM3_S
+#define NRF_CLOCK NRF_CLOCK_S
+#define NRF_DPPIC NRF_DPPIC_S
+#define NRF_EGU0 NRF_EGU0_S
+#define NRF_EGU1 NRF_EGU1_S
+#define NRF_EGU2 NRF_EGU2_S
+#define NRF_EGU3 NRF_EGU3_S
+#define NRF_EGU4 NRF_EGU4_S
+#define NRF_EGU5 NRF_EGU5_S
+#define NRF_FPU NRF_FPU_S
+#define NRF_P0 NRF_P0_S
+#define NRF_I2S NRF_I2S_S
+#define NRF_KMU NRF_KMU_S
+#define NRF_NVMC NRF_NVMC_S
+#define NRF_PDM NRF_PDM_S
+#define NRF_POWER NRF_POWER_S
+#define NRF_PWM0 NRF_PWM0_S
+#define NRF_PWM1 NRF_PWM1_S
+#define NRF_PWM2 NRF_PWM2_S
+#define NRF_PWM3 NRF_PWM3_S
 #define NRF_REGULATORS NRF_REGULATORS_S
-#define NRF_RTC0       NRF_RTC0_S
-#define NRF_RTC1       NRF_RTC1_S
-#define NRF_SAADC      NRF_SAADC_S
-#define NRF_SPIM0      NRF_SPIM0_S
-#define NRF_SPIM1      NRF_SPIM1_S
-#define NRF_SPIM2      NRF_SPIM2_S
-#define NRF_SPIM3      NRF_SPIM3_S
-#define NRF_SPIS0      NRF_SPIS0_S
-#define NRF_SPIS1      NRF_SPIS1_S
-#define NRF_SPIS2      NRF_SPIS2_S
-#define NRF_SPIS3      NRF_SPIS3_S
-#define NRF_TIMER0     NRF_TIMER0_S
-#define NRF_TIMER1     NRF_TIMER1_S
-#define NRF_TIMER2     NRF_TIMER2_S
-#define NRF_TWIM0      NRF_TWIM0_S
-#define NRF_TWIM1      NRF_TWIM1_S
-#define NRF_TWIM2      NRF_TWIM2_S
-#define NRF_TWIM3      NRF_TWIM3_S
-#define NRF_TWIS0      NRF_TWIS0_S
-#define NRF_TWIS1      NRF_TWIS1_S
-#define NRF_TWIS2      NRF_TWIS2_S
-#define NRF_TWIS3      NRF_TWIS3_S
-#define NRF_UARTE0     NRF_UARTE0_S
-#define NRF_UARTE1     NRF_UARTE1_S
-#define NRF_UARTE2     NRF_UARTE2_S
-#define NRF_UARTE3     NRF_UARTE3_S
-#define NRF_VMC        NRF_VMC_S
-#define NRF_WDT        NRF_WDT_S
+#define NRF_RTC0 NRF_RTC0_S
+#define NRF_RTC1 NRF_RTC1_S
+#define NRF_SAADC NRF_SAADC_S
+#define NRF_SPIM0 NRF_SPIM0_S
+#define NRF_SPIM1 NRF_SPIM1_S
+#define NRF_SPIM2 NRF_SPIM2_S
+#define NRF_SPIM3 NRF_SPIM3_S
+#define NRF_SPIS0 NRF_SPIS0_S
+#define NRF_SPIS1 NRF_SPIS1_S
+#define NRF_SPIS2 NRF_SPIS2_S
+#define NRF_SPIS3 NRF_SPIS3_S
+#define NRF_TIMER0 NRF_TIMER0_S
+#define NRF_TIMER1 NRF_TIMER1_S
+#define NRF_TIMER2 NRF_TIMER2_S
+#define NRF_TWIM0 NRF_TWIM0_S
+#define NRF_TWIM1 NRF_TWIM1_S
+#define NRF_TWIM2 NRF_TWIM2_S
+#define NRF_TWIM3 NRF_TWIM3_S
+#define NRF_TWIS0 NRF_TWIS0_S
+#define NRF_TWIS1 NRF_TWIS1_S
+#define NRF_TWIS2 NRF_TWIS2_S
+#define NRF_TWIS3 NRF_TWIS3_S
+#define NRF_UARTE0 NRF_UARTE0_S
+#define NRF_UARTE1 NRF_UARTE1_S
+#define NRF_UARTE2 NRF_UARTE2_S
+#define NRF_UARTE3 NRF_UARTE3_S
+#define NRF_VMC NRF_VMC_S
+#define NRF_WDT NRF_WDT_S
 
 /*
  * The following section provides the name translation for peripherals with
@@ -64,14 +64,14 @@
  * between secure and non-secure mapping.
  */
 #define NRF_CRYPTOCELL NRF_CRYPTOCELL_S
-#define NRF_FICR       NRF_FICR_S
-#define NRF_GPIOTE0    NRF_GPIOTE0_S
-#define NRF_GPIOTE1    NRF_GPIOTE1_NS
-#define NRF_SPU        NRF_SPU_S
-#define NRF_UICR       NRF_UICR_S
+#define NRF_FICR NRF_FICR_S
+#define NRF_GPIOTE0 NRF_GPIOTE0_S
+#define NRF_GPIOTE1 NRF_GPIOTE1_NS
+#define NRF_SPU NRF_SPU_S
+#define NRF_UICR NRF_UICR_S
 
 /* Fixups for GPIOTE HAL and driver. */
-#define NRF_GPIOTE        NRF_GPIOTE0_S
+#define NRF_GPIOTE NRF_GPIOTE0_S
 #define GPIOTE_IRQHandler GPIOTE0_IRQHandler
 
 // <<< Use Configuration Wizard in Context Menu >>>\n
@@ -223,7 +223,8 @@
 #ifndef NRFX_GPIOTE_ENABLED
 #define NRFX_GPIOTE_ENABLED 1
 #endif
-// <o> NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS - Number of lower power input pins.
+// <o> NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS - Number of lower power input
+// pins.
 #ifndef NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS
 #define NRFX_GPIOTE_CONFIG_NUM_OF_LOW_POWER_EVENTS 1
 #endif
@@ -303,13 +304,11 @@
 #endif
 // <o> NRFX_I2S_CONFIG_SCK_PIN - SCK pin  <0-31>
 
-
 #ifndef NRFX_I2S_CONFIG_SCK_PIN
 #define NRFX_I2S_CONFIG_SCK_PIN 31
 #endif
 
 // <o> NRFX_I2S_CONFIG_LRCK_PIN - LRCK pin  <1-31>
-
 
 #ifndef NRFX_I2S_CONFIG_LRCK_PIN
 #define NRFX_I2S_CONFIG_LRCK_PIN 30
@@ -322,13 +321,11 @@
 
 // <o> NRFX_I2S_CONFIG_SDOUT_PIN - SDOUT pin  <0-31>
 
-
 #ifndef NRFX_I2S_CONFIG_SDOUT_PIN
 #define NRFX_I2S_CONFIG_SDOUT_PIN 29
 #endif
 
 // <o> NRFX_I2S_CONFIG_SDIN_PIN - SDIN pin  <0-31>
-
 
 #ifndef NRFX_I2S_CONFIG_SDIN_PIN
 #define NRFX_I2S_CONFIG_SDIN_PIN 28
@@ -615,10 +612,11 @@
 #define NRFX_POWER_CONFIG_IRQ_PRIORITY 7
 #endif
 
-// <q> NRFX_POWER_CONFIG_DEFAULT_DCDCEN  - The default configuration of the main DCDC regulator.
+// <q> NRFX_POWER_CONFIG_DEFAULT_DCDCEN  - The default configuration of the main
+// DCDC regulator.
 
-
-// <i> This settings means only that components for DCDC regulator are installed and it can be enabled.
+// <i> This settings means only that components for DCDC regulator are installed
+// and it can be enabled.
 
 #ifndef NRFX_POWER_CONFIG_DEFAULT_DCDCEN
 #define NRFX_POWER_CONFIG_DEFAULT_DCDCEN 0
@@ -633,13 +631,11 @@
 #endif
 // <q> NRFX_PRS_BOX_0_ENABLED  - Enables box 0 in the module.
 
-
 #ifndef NRFX_PRS_BOX_0_ENABLED
 #define NRFX_PRS_BOX_0_ENABLED 1
 #endif
 
 // <q> NRFX_PRS_BOX_1_ENABLED  - Enables box 1 in the module.
-
 
 #ifndef NRFX_PRS_BOX_1_ENABLED
 #define NRFX_PRS_BOX_1_ENABLED 1
@@ -647,13 +643,11 @@
 
 // <q> NRFX_PRS_BOX_2_ENABLED  - Enables box 2 in the module.
 
-
 #ifndef NRFX_PRS_BOX_2_ENABLED
 #define NRFX_PRS_BOX_2_ENABLED 1
 #endif
 
 // <q> NRFX_PRS_BOX_3_ENABLED  - Enables box 3 in the module.
-
 
 #ifndef NRFX_PRS_BOX_3_ENABLED
 #define NRFX_PRS_BOX_3_ENABLED 1
@@ -719,13 +713,11 @@
 #endif
 // <q> NRFX_PWM0_ENABLED  - Enables PWM0 instance.
 
-
 #ifndef NRFX_PWM0_ENABLED
 #define NRFX_PWM0_ENABLED 1
 #endif
 
 // <q> NRFX_PWM1_ENABLED  - Enables PWM1 instance.
-
 
 #ifndef NRFX_PWM1_ENABLED
 #define NRFX_PWM1_ENABLED 1
@@ -733,13 +725,11 @@
 
 // <q> NRFX_PWM2_ENABLED  - Enables PWM2 instance.
 
-
 #ifndef NRFX_PWM2_ENABLED
 #define NRFX_PWM2_ENABLED 1
 #endif
 
 // <q> NRFX_PWM3_ENABLED  - Enables PWM3 instance.
-
 
 #ifndef NRFX_PWM3_ENABLED
 #define NRFX_PWM3_ENABLED 1
@@ -747,13 +737,11 @@
 
 // <o> NRFX_PWM_DEFAULT_CONFIG_OUT0_PIN - Out0 pin <0-31>
 
-
 #ifndef NRFX_PWM_DEFAULT_CONFIG_OUT0_PIN
 #define NRFX_PWM_DEFAULT_CONFIG_OUT0_PIN 31
 #endif
 
 // <o> NRFX_PWM_DEFAULT_CONFIG_OUT1_PIN - Out1 pin <0-31>
-
 
 #ifndef NRFX_PWM_DEFAULT_CONFIG_OUT1_PIN
 #define NRFX_PWM_DEFAULT_CONFIG_OUT1_PIN 31
@@ -761,13 +749,11 @@
 
 // <o> NRFX_PWM_DEFAULT_CONFIG_OUT2_PIN - Out2 pin <0-31>
 
-
 #ifndef NRFX_PWM_DEFAULT_CONFIG_OUT2_PIN
 #define NRFX_PWM_DEFAULT_CONFIG_OUT2_PIN 31
 #endif
 
 // <o> NRFX_PWM_DEFAULT_CONFIG_OUT3_PIN - Out3 pin <0-31>
-
 
 #ifndef NRFX_PWM_DEFAULT_CONFIG_OUT3_PIN
 #define NRFX_PWM_DEFAULT_CONFIG_OUT3_PIN 31
@@ -897,32 +883,30 @@
 #endif
 // <q> NRFX_RTC0_ENABLED  - Enables RTC0 instance.
 
-
 #ifndef NRFX_RTC0_ENABLED
 #define NRFX_RTC0_ENABLED 1
 #endif
 
 // <q> NRFX_RTC1_ENABLED  - Enables RTC1 instance.
 
-
 #ifndef NRFX_RTC1_ENABLED
 #define NRFX_RTC1_ENABLED 1
 #endif
 
-// <o> NRFX_RTC_MAXIMUM_LATENCY_US - Maximum possible time in highest priority interrupt, in microseconds.
+// <o> NRFX_RTC_MAXIMUM_LATENCY_US - Maximum possible time in highest priority
+// interrupt, in microseconds.
 #ifndef NRFX_RTC_MAXIMUM_LATENCY_US
 #define NRFX_RTC_MAXIMUM_LATENCY_US 2000
 #endif
 
 // <o> NRFX_RTC_DEFAULT_CONFIG_FREQUENCY - Frequency <16-32768>
 
-
 #ifndef NRFX_RTC_DEFAULT_CONFIG_FREQUENCY
 #define NRFX_RTC_DEFAULT_CONFIG_FREQUENCY 32768
 #endif
 
-// <q> NRFX_RTC_DEFAULT_CONFIG_RELIABLE  - Ensures safe compare event triggering.
-
+// <q> NRFX_RTC_DEFAULT_CONFIG_RELIABLE  - Ensures safe compare event
+// triggering.
 
 #ifndef NRFX_RTC_DEFAULT_CONFIG_RELIABLE
 #define NRFX_RTC_DEFAULT_CONFIG_RELIABLE 0
@@ -1030,7 +1014,6 @@
 
 // <q> NRFX_SAADC_CONFIG_LP_MODE  - Enables low power mode.
 
-
 #ifndef NRFX_SAADC_CONFIG_LP_MODE
 #define NRFX_SAADC_CONFIG_LP_MODE 0
 #endif
@@ -1110,13 +1093,11 @@
 #endif
 // <q> NRFX_SPIM0_ENABLED  - Enables SPIM0 instance.
 
-
 #ifndef NRFX_SPIM0_ENABLED
 #define NRFX_SPIM0_ENABLED 1
 #endif
 
 // <q> NRFX_SPIM1_ENABLED  - Enables SPIM1 instance.
-
 
 #ifndef NRFX_SPIM1_ENABLED
 #define NRFX_SPIM1_ENABLED 1
@@ -1124,18 +1105,15 @@
 
 // <q> NRFX_SPIM2_ENABLED  - Enables SPIM2 instance.
 
-
 #ifndef NRFX_SPIM2_ENABLED
 #define NRFX_SPIM2_ENABLED 1
 #endif
 
 // <q> NRFX_SPIM3_ENABLED  - Enables SPIM3 instance.
 
-
 #ifndef NRFX_SPIM3_ENABLED
 #define NRFX_SPIM3_ENABLED 1
 #endif
-
 
 // <o> NRFX_SPIM_MISO_PULL_CFG  - MISO pin pull configuration.
 
@@ -1222,13 +1200,11 @@
 #endif
 // <q> NRFX_SPIS0_ENABLED  - Enables SPIS0 instance.
 
-
 #ifndef NRFX_SPIS0_ENABLED
 #define NRFX_SPIS0_ENABLED 1
 #endif
 
 // <q> NRFX_SPIS1_ENABLED  - Enables SPIS1 instance.
-
 
 #ifndef NRFX_SPIS1_ENABLED
 #define NRFX_SPIS1_ENABLED 1
@@ -1236,13 +1212,11 @@
 
 // <q> NRFX_SPIS2_ENABLED  - Enables SPIS2 instance.
 
-
 #ifndef NRFX_SPIS2_ENABLED
 #define NRFX_SPIS2_ENABLED 1
 #endif
 
 // <q> NRFX_SPIS3_ENABLED  - Enables SPIS3 instance.
-
 
 #ifndef NRFX_SPIS3_ENABLED
 #define NRFX_SPIS3_ENABLED 1
@@ -1265,13 +1239,11 @@
 
 // <o> NRFX_SPIS_DEFAULT_DEF - SPIS default DEF character <0-255>
 
-
 #ifndef NRFX_SPIS_DEFAULT_DEF
 #define NRFX_SPIS_DEFAULT_DEF 255
 #endif
 
 // <o> NRFX_SPIS_DEFAULT_ORC - SPIS default ORC character <0-255>
-
 
 #ifndef NRFX_SPIS_DEFAULT_ORC
 #define NRFX_SPIS_DEFAULT_ORC 255
@@ -1337,13 +1309,11 @@
 #endif
 // <q> NRFX_EGU_ENABLED  - Enables EGU support.
 
-
 #ifndef NRFX_EGU_ENABLED
 #define NRFX_EGU_ENABLED 1
 #endif
 
 // <q> NRFX_SWI0_DISABLED  - Excludes SWI0 from being utilized by the driver.
-
 
 #ifndef NRFX_SWI0_DISABLED
 #define NRFX_SWI0_DISABLED 0
@@ -1351,13 +1321,11 @@
 
 // <q> NRFX_SWI1_DISABLED  - Excludes SWI1 from being utilized by the driver.
 
-
 #ifndef NRFX_SWI1_DISABLED
 #define NRFX_SWI1_DISABLED 0
 #endif
 
 // <q> NRFX_SWI2_DISABLED  - Excludes SWI2 from being utilized by the driver.
-
 
 #ifndef NRFX_SWI2_DISABLED
 #define NRFX_SWI2_DISABLED 0
@@ -1365,20 +1333,17 @@
 
 // <q> NRFX_SWI3_DISABLED  - Excludes SWI3 from being utilized by the driver.
 
-
 #ifndef NRFX_SWI3_DISABLED
 #define NRFX_SWI3_DISABLED 0
 #endif
 
 // <q> NRFX_SWI4_DISABLED  - Excludes SWI4 from being utilized by the driver.
 
-
 #ifndef NRFX_SWI4_DISABLED
 #define NRFX_SWI4_DISABLED 0
 #endif
 
 // <q> NRFX_SWI5_DISABLED  - Excludes SWI5 from being utilized by the driver.
-
 
 #ifndef NRFX_SWI5_DISABLED
 #define NRFX_SWI5_DISABLED 0
@@ -1439,7 +1404,6 @@
 
 // <q> NRFX_SYSTICK_ENABLED  - nrfx_systick - ARM(R) SysTick driver.
 
-
 #ifndef NRFX_SYSTICK_ENABLED
 #define NRFX_SYSTICK_ENABLED 1
 #endif
@@ -1451,20 +1415,17 @@
 #endif
 // <q> NRFX_TIMER0_ENABLED  - Enables TIMER0 instance.
 
-
 #ifndef NRFX_TIMER0_ENABLED
 #define NRFX_TIMER0_ENABLED 1
 #endif
 
 // <q> NRFX_TIMER1_ENABLED  - Enables TIMER1 instance.
 
-
 #ifndef NRFX_TIMER1_ENABLED
 #define NRFX_TIMER1_ENABLED 1
 #endif
 
 // <q> NRFX_TIMER2_ENABLED  - Enables TIMER2 instance.
-
 
 #ifndef NRFX_TIMER2_ENABLED
 #define NRFX_TIMER2_ENABLED 1
@@ -1582,13 +1543,11 @@
 #endif
 // <q> NRFX_TWIM0_ENABLED  - Enables TWIM0 instance.
 
-
 #ifndef NRFX_TWIM0_ENABLED
 #define NRFX_TWIM0_ENABLED 1
 #endif
 
 // <q> NRFX_TWIM1_ENABLED  - Enables TWIM1 instance.
-
 
 #ifndef NRFX_TWIM1_ENABLED
 #define NRFX_TWIM1_ENABLED 1
@@ -1596,13 +1555,11 @@
 
 // <q> NRFX_TWIM2_ENABLED  - Enables TWIM2 instance.
 
-
 #ifndef NRFX_TWIM2_ENABLED
 #define NRFX_TWIM2_ENABLED 1
 #endif
 
 // <q> NRFX_TWIM3_ENABLED  - Enables TWIM3 instance.
-
 
 #ifndef NRFX_TWIM3_ENABLED
 #define NRFX_TWIM3_ENABLED 1
@@ -1618,8 +1575,8 @@
 #define NRFX_TWIM_DEFAULT_CONFIG_FREQUENCY 26738688
 #endif
 
-// <q> NRFX_TWIM_DEFAULT_CONFIG_HOLD_BUS_UNINIT  - Enables bus holding after uninit.
-
+// <q> NRFX_TWIM_DEFAULT_CONFIG_HOLD_BUS_UNINIT  - Enables bus holding after
+// uninit.
 
 #ifndef NRFX_TWIM_DEFAULT_CONFIG_HOLD_BUS_UNINIT
 #define NRFX_TWIM_DEFAULT_CONFIG_HOLD_BUS_UNINIT 0
@@ -1700,13 +1657,11 @@
 #endif
 // <q> NRFX_TWIS0_ENABLED  - Enables TWIS0 instance.
 
-
 #ifndef NRFX_TWIS0_ENABLED
 #define NRFX_TWIS0_ENABLED 1
 #endif
 
 // <q> NRFX_TWIS1_ENABLED  - Enables TWIS1 instance.
-
 
 #ifndef NRFX_TWIS1_ENABLED
 #define NRFX_TWIS1_ENABLED 1
@@ -1714,22 +1669,25 @@
 
 // <q> NRFX_TWIS2_ENABLED  - Enables TWIS2 instance.
 
-
 #ifndef NRFX_TWIS2_ENABLED
 #define NRFX_TWIS2_ENABLED 1
 #endif
 
 // <q> NRFX_TWIS3_ENABLED  - Enables TWIS3 instance.
 
-
 #ifndef NRFX_TWIS3_ENABLED
 #define NRFX_TWIS3_ENABLED 1
 #endif
 
-// <q> NRFX_TWIS_ASSUME_INIT_AFTER_RESET_ONLY  - Assumes that any instance would be initialized only once.
+// <q> NRFX_TWIS_ASSUME_INIT_AFTER_RESET_ONLY  - Assumes that any instance would
+// be initialized only once.
 
-
-// <i> Optimization flag. Registers used by TWIS are shared by other peripherals. Normally, during initialization driver tries to clear all registers to known state before doing the initialization itself. This gives initialization safe procedure, no matter when it would be called. If you activate TWIS only once and do never uninitialize it - set this flag to 1 what gives more optimal code.
+// <i> Optimization flag. Registers used by TWIS are shared by other
+// peripherals. Normally, during initialization driver tries to clear all
+// registers to known state before doing the initialization itself. This gives
+// initialization safe procedure, no matter when it would be called. If you
+// activate TWIS only once and do never uninitialize it - set this flag to 1
+// what gives more optimal code.
 
 #ifndef NRFX_TWIS_ASSUME_INIT_AFTER_RESET_ONLY
 #define NRFX_TWIS_ASSUME_INIT_AFTER_RESET_ONLY 0
@@ -1737,8 +1695,10 @@
 
 // <q> NRFX_TWIS_NO_SYNC_MODE  - Removes support for synchronous mode.
 
-
-// <i> Synchronous mode would be used in specific situations. And it uses some additional code and data memory to safely process state machine by polling it in status functions. If this functionality is not required it may be disabled to free some resources.
+// <i> Synchronous mode would be used in specific situations. And it uses some
+// additional code and data memory to safely process state machine by polling it
+// in status functions. If this functionality is not required it may be disabled
+// to free some resources.
 
 #ifndef NRFX_TWIS_NO_SYNC_MODE
 #define NRFX_TWIS_NO_SYNC_MODE 0
@@ -1995,7 +1955,6 @@
 #endif
 
 // <o> NRFX_WDT_CONFIG_RELOAD_VALUE - Reload value <15-4294967295>
-
 
 #ifndef NRFX_WDT_CONFIG_RELOAD_VALUE
 #define NRFX_WDT_CONFIG_RELOAD_VALUE 2000

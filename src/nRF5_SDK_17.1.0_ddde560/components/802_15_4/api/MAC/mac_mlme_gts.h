@@ -1,14 +1,15 @@
 /**
- * Copyright (c) 2016 - 2021 Nordic Semiconductor ASA and Luxoft Global Operations Gmbh.
+ * Copyright (c) 2016 - 2021 Nordic Semiconductor ASA and Luxoft Global
+ * Operations Gmbh.
  *
  * All Rights Reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -23,20 +24,21 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #ifndef MAC_MLME_GTS_H_INCLUDED
@@ -44,9 +46,9 @@
 
 #if (CONFIG_GTS_ENABLED == 1)
 
-#include <stdint.h>
 #include "mac_common.h"
 #include "mac_task_scheduler.h"
+#include <stdint.h>
 
 /** @file
  * The MAC MLME GTS module declares the MAC Guaranteed time slots routines and
@@ -56,42 +58,37 @@
  * @ingroup mac_15_4
  * @{
  * @brief Module to declare MAC MLME GTS API.
- * @details The MAC GTS module declares MAC Guaranteed Time Slots routines and necessary types according to
- * the MAC specification. More specifically, MLME GTS request aka mlme_gts_req(), MLME GTS indicaton
- * aka mlme_gts_ind(), and MLME GTS confirm callback typedef aka mlme_gts_conf_cb_t primitives are
+ * @details The MAC GTS module declares MAC Guaranteed Time Slots routines and
+ * necessary types according to the MAC specification. More specifically, MLME
+ * GTS request aka mlme_gts_req(), MLME GTS indicaton aka mlme_gts_ind(), and
+ * MLME GTS confirm callback typedef aka mlme_gts_conf_cb_t primitives are
  * declared.
  */
 
 /**@brief   GTS directions, from device side. */
-typedef enum
-{
-    MAC_GTS_DIR_TXONLY = 0,                /**< TX only direction. */
-    MAC_GTS_DIR_RXONLY = 1                 /**< RX only direction. */
+typedef enum {
+  MAC_GTS_DIR_TXONLY = 0, /**< TX only direction. */
+  MAC_GTS_DIR_RXONLY = 1  /**< RX only direction. */
 } mac_gts_direction_t;
 
-
 /**@brief   GTS characteristics type. */
-typedef enum
-{
-    MAC_GTS_DEALLOC = 0,                   /**< GTS Dealloc. */
-    MAC_GTS_ALLOC   = 1                    /**< GTS Alloc. */
+typedef enum {
+  MAC_GTS_DEALLOC = 0, /**< GTS Dealloc. */
+  MAC_GTS_ALLOC = 1    /**< GTS Alloc. */
 } mac_gts_characteristics_type_t;
-
 
 /**@brief   MAC GTS characteristics (not packed)
  *
  * @details See Section 7.3.9.2
  */
-typedef union
-{
-    struct
-    {
-        uint8_t gts_length                 : 4;
-        uint8_t gts_direction              : 1;
-        uint8_t characterictics_type       : 1;
-        uint8_t                            : 2;
-    } bit;
-    uint8_t all;
+typedef union {
+  struct {
+    uint8_t gts_length : 4;
+    uint8_t gts_direction : 1;
+    uint8_t characterictics_type : 1;
+    uint8_t : 2;
+  } bit;
+  uint8_t all;
 } mac_gts_characteristics_t;
 
 /**
@@ -102,39 +99,36 @@ typedef union
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.7.2
  */
-typedef struct
-{
-    mac_gts_characteristics_t     gts_characteristics;  /**< GTS characteristics. */
-    mac_status_t                  status;               /**< Status of operation. */
+typedef struct {
+  mac_gts_characteristics_t gts_characteristics; /**< GTS characteristics. */
+  mac_status_t status;                           /**< Status of operation. */
 } mlme_gts_conf_t;
-
 
 /**
  * @brief   MLME-GTS.request
  *
  * @details The MLME-GTS.request primitive allows a device to send a request
- * to the PAN coordinator to allocate a new GTS or to deallocate an existing GTS.
- * This primitive is also used by the PAN coordinator to initiate a GTS deallocation.
+ * to the PAN coordinator to allocate a new GTS or to deallocate an existing
+ * GTS. This primitive is also used by the PAN coordinator to initiate a GTS
+ * deallocation.
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.7.1
  */
-typedef struct
-{
-    /** Do not edit this field. */
-    mac_abstract_req_t            service;
+typedef struct {
+  /** Do not edit this field. */
+  mac_abstract_req_t service;
 
-    /** Confirm to this request. */
-    mlme_gts_conf_t               confirm;
+  /** Confirm to this request. */
+  mlme_gts_conf_t confirm;
 
-    mac_gts_characteristics_t     gts_characteristics;  /**< GTS characteristics. */
+  mac_gts_characteristics_t gts_characteristics; /**< GTS characteristics. */
 #if (CONFIG_SECURE == 1)
-    uint8_t                       security_level;       /**< Security level. */
-    uint8_t                       key_id_mode;          /**< Key ID mode. */
-    uint64_t                      key_source;           /**< Key source. */
-    uint8_t                       key_index;            /**< Key index. */
+  uint8_t security_level; /**< Security level. */
+  uint8_t key_id_mode;    /**< Key ID mode. */
+  uint64_t key_source;    /**< Key source. */
+  uint8_t key_index;      /**< Key index. */
 #endif
 } mlme_gts_req_t;
-
 
 /**
  * @brief   MLME-GTS.indication
@@ -145,18 +139,16 @@ typedef struct
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.7.3
  */
-typedef struct
-{
-    uint16_t                      device_address;       /**< Device address. */
-    mac_gts_characteristics_t     gts_characteristics;  /**< GTS characteristics. */
+typedef struct {
+  uint16_t device_address;                       /**< Device address. */
+  mac_gts_characteristics_t gts_characteristics; /**< GTS characteristics. */
 #if (CONFIG_SECURE == 1)
-    uint8_t                       security_level;       /**< Security level. */
-    uint8_t                       key_id_mode;          /**< Key ID mode. */
-    uint64_t                      key_source;           /**< Key source. */
-    uint8_t                       key_index;            /**< Key index. */
+  uint8_t security_level; /**< Security level. */
+  uint8_t key_id_mode;    /**< Key ID mode. */
+  uint64_t key_source;    /**< Key source. */
+  uint8_t key_index;      /**< Key index. */
 #endif
 } mlme_gts_ind_t;
-
 
 /**
  * @brief   MLME-GTS confirm callback
@@ -169,8 +161,7 @@ typedef struct
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.7.4
  */
-typedef void (* mlme_gts_conf_cb_t)(mlme_gts_conf_t *);
-
+typedef void (*mlme_gts_conf_cb_t)(mlme_gts_conf_t *);
 
 /**
  * @brief   MLME-GTS request
@@ -186,8 +177,7 @@ typedef void (* mlme_gts_conf_cb_t)(mlme_gts_conf_t *);
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.7.4
  */
-void mlme_gts_req(mlme_gts_req_t * req, mlme_gts_conf_cb_t conf_cb);
-
+void mlme_gts_req(mlme_gts_req_t *req, mlme_gts_conf_cb_t conf_cb);
 
 /**
  * @brief   MLME-GTS indication handler
@@ -195,14 +185,14 @@ void mlme_gts_req(mlme_gts_req_t * req, mlme_gts_conf_cb_t conf_cb);
  * @details The MLME-GTS.indication primitive is generated by the MLME of
  * the PAN coordinator to its next higher layer whenever a GTS is allocated
  * or deallocated following the reception of a GTS request command (see 7.3.9)
- * by the MLME. The MLME of the PAN coordinator also generates this primitive when a GTS
- * deallocation is initiated by the PAN coordinator itself.
+ * by the MLME. The MLME of the PAN coordinator also generates this primitive
+ * when a GTS deallocation is initiated by the PAN coordinator itself.
  *
  * @param ind MLME_GTS indication structure.
  *
  * In accordance with IEEE Std 802.15.4-2006, section 7.1.7.4
  */
-extern void mlme_gts_ind(mlme_gts_ind_t * ind);
+extern void mlme_gts_ind(mlme_gts_ind_t *ind);
 
 /** @} */
 

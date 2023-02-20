@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -42,8 +43,8 @@
  * @defgroup nrf_oberon_p256 ECC secp256r1 low-level APIs
  * @ingroup nrf_oberon
  * @{
- * @brief Type declarations and APIs for low-level elliptic curve point operations
- * based on the NIST secp256r1 curve.
+ * @brief Type declarations and APIs for low-level elliptic curve point
+ * operations based on the NIST secp256r1 curve.
  */
 
 #ifndef OCRYPTO_CURVE_P256_H
@@ -59,25 +60,23 @@ extern "C" {
 
 // (x,y) only jacobian coordinates
 typedef struct {
-    ocrypto_mod_p256 x;
-    ocrypto_mod_p256 y;
+  ocrypto_mod_p256 x;
+  ocrypto_mod_p256 y;
 } ocrypto_cp_p256;
 
 // P-256 invert context
 typedef struct {
-    ocrypto_mod_p256 x, x3, xn, t;
-    int step;
+  ocrypto_mod_p256 x, x3, xn, t;
+  int step;
 } ocrypto_p256_invert_context;
 
-
 typedef struct {
-    ocrypto_cp_p256 p, q0, q1;
-    uint32_t e[8]; // bits 0-255 of extended scalar, bit 256 = ~bit 255
-    ocrypto_p256_invert_context inv;
-    int ret, prev, dec, step;
+  ocrypto_cp_p256 p, q0, q1;
+  uint32_t e[8]; // bits 0-255 of extended scalar, bit 256 = ~bit 255
+  ocrypto_p256_invert_context inv;
+  int ret, prev, dec, step;
 } ocrypto_p256_mult_context;
 /**@endcond */
-
 
 /** Load r.x from bytes, keep r.y.
  *
@@ -88,7 +87,6 @@ typedef struct {
  * @retval -1 Otherwise.
  */
 int ocrypto_curve_p256_from32bytes(ocrypto_cp_p256 *r, const uint8_t p[32]);
-
 
 /** Load point from bytes.
  *
@@ -127,7 +125,8 @@ void ocrypto_curve_p256_to64bytes(uint8_t r[64], ocrypto_cp_p256 *p);
  * @retval 0  If 0 < s < q.
  * @retval 1  If s > q.
  */
-int ocrypto_curve_p256_scalarmult(ocrypto_cp_p256 *r, const ocrypto_cp_p256 *p, const ocrypto_sc_p256 *s);
+int ocrypto_curve_p256_scalarmult(ocrypto_cp_p256 *r, const ocrypto_cp_p256 *p,
+                                  const ocrypto_sc_p256 *s);
 
 /** P256 scalar base multiplication.
  *
@@ -141,7 +140,8 @@ int ocrypto_curve_p256_scalarmult(ocrypto_cp_p256 *r, const ocrypto_cp_p256 *p, 
  * @retval 0  If 0 < s < q.
  * @retval 1  If s > q.
  */
-int ocrypto_curve_p256_scalarmult_base(ocrypto_cp_p256 *r, const ocrypto_sc_p256 *s);
+int ocrypto_curve_p256_scalarmult_base(ocrypto_cp_p256 *r,
+                                       const ocrypto_sc_p256 *s);
 
 #ifdef __cplusplus
 }

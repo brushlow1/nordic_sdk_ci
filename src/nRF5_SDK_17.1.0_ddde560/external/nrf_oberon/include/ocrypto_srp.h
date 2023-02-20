@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -60,7 +61,8 @@
  *
  * The specific variant implemented here is SRP-6 3072 bit SHA-512.
  *
- * @see [RFC 5054 - Using the Secure Remote Password (SRP) Protocol for TLS Authentication](https://tools.ietf.org/html/rfc5054)
+ * @see [RFC 5054 - Using the Secure Remote Password (SRP) Protocol for TLS
+ * Authentication](https://tools.ietf.org/html/rfc5054)
  * @see [The Stanford SRP Homepage](http://srp.stanford.edu)
  *
  * **Basic protocol overview**
@@ -80,8 +82,8 @@
  *    #ocrypto_srp_scrambling_parameter, #ocrypto_srp_premaster_secret,
  *    #ocrypto_srp_session_key).
  * 4. Client sends proof of the session key to the server.
- * 5. Server validates proof (see #ocrypto_srp_proof_m1), then sends proof of the
- *    session key to the client (see #ocrypto_srp_proof_m2).
+ * 5. Server validates proof (see #ocrypto_srp_proof_m1), then sends proof of
+ * the session key to the client (see #ocrypto_srp_proof_m2).
  * 6. Client validates proof. Both parties know that they share the same private
  *    session key.
  */
@@ -92,11 +94,9 @@
 #include <stddef.h>
 #include <stdint.h>
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 /**
  * Salt length.
@@ -138,7 +138,6 @@ extern "C" {
  */
 #define ocrypto_srp_PROOF_BYTES (64)
 
-
 /**@name SRP-6 Password verifier generation
  *
  * A password verifier is generated from a user name and a password. The
@@ -159,11 +158,10 @@ extern "C" {
  * @param      pass     Password.
  * @param      pass_len Length of @p pass.
  */
-void ocrypto_srp_verifier(
-    uint8_t v[ocrypto_srp_VERIFIER_BYTES],
-    const uint8_t salt[ocrypto_srp_SALT_BYTES],
-    const uint8_t *user, size_t user_len,
-    const uint8_t *pass, size_t pass_len);
+void ocrypto_srp_verifier(uint8_t v[ocrypto_srp_VERIFIER_BYTES],
+                          const uint8_t salt[ocrypto_srp_SALT_BYTES],
+                          const uint8_t *user, size_t user_len,
+                          const uint8_t *pass, size_t pass_len);
 /**@}*/
 
 /**@name SRP-6 Public key generation
@@ -182,10 +180,9 @@ void ocrypto_srp_verifier(
  * @param      priv_b Private key.
  * @param      v      Password verifier.
  */
-void ocrypto_srp_public_key(
-    uint8_t pub_b[ocrypto_srp_PUBLIC_KEY_BYTES],
-    const uint8_t priv_b[ocrypto_srp_SECRET_KEY_BYTES],
-    const uint8_t v[ocrypto_srp_VERIFIER_BYTES]);
+void ocrypto_srp_public_key(uint8_t pub_b[ocrypto_srp_PUBLIC_KEY_BYTES],
+                            const uint8_t priv_b[ocrypto_srp_SECRET_KEY_BYTES],
+                            const uint8_t v[ocrypto_srp_VERIFIER_BYTES]);
 /**@}*/
 
 /**@name SRP-6 Session key generation
@@ -223,7 +220,8 @@ void ocrypto_srp_scrambling_parameter(
  * @param[out] s      Generated premaster secret, must be 32-bit aligned.
  * @param      pub_a  Client public key.
  * @param      priv_b Server private key.
- * @param      u      Scrambling parameter; generated with @c srp_scrambling_parameter.
+ * @param      u      Scrambling parameter; generated with @c
+ * srp_scrambling_parameter.
  * @param      v      Password verifier.
  *
  * @retval 0 If @p pub_a is a valid public key.
@@ -274,13 +272,12 @@ void ocrypto_srp_session_key(
  * @param      pub_b    Server public key.
  * @param      k        Session key.
  */
-void ocrypto_srp_proof_m1(
-    uint8_t m1[ocrypto_srp_PROOF_BYTES],
-    const uint8_t *user, size_t user_len,
-    const uint8_t salt[ocrypto_srp_SALT_BYTES],
-    const uint8_t pub_a[ocrypto_srp_PUBLIC_KEY_BYTES],
-    const uint8_t pub_b[ocrypto_srp_PUBLIC_KEY_BYTES],
-    const uint8_t k[ocrypto_srp_SESSION_KEY_BYTES]);
+void ocrypto_srp_proof_m1(uint8_t m1[ocrypto_srp_PROOF_BYTES],
+                          const uint8_t *user, size_t user_len,
+                          const uint8_t salt[ocrypto_srp_SALT_BYTES],
+                          const uint8_t pub_a[ocrypto_srp_PUBLIC_KEY_BYTES],
+                          const uint8_t pub_b[ocrypto_srp_PUBLIC_KEY_BYTES],
+                          const uint8_t k[ocrypto_srp_SESSION_KEY_BYTES]);
 
 /**
  * SRP-6 Proof M2 (server to client).
@@ -296,11 +293,10 @@ void ocrypto_srp_proof_m1(
  * @param      m1    First proof. Generated with @c srp_proof_m1.
  * @param      k     Session key.
  */
-void ocrypto_srp_proof_m2(
-    uint8_t m2[ocrypto_srp_PROOF_BYTES],
-    const uint8_t pub_a[ocrypto_srp_PUBLIC_KEY_BYTES],
-    const uint8_t m1[ocrypto_srp_PROOF_BYTES],
-    const uint8_t k[ocrypto_srp_SESSION_KEY_BYTES]);
+void ocrypto_srp_proof_m2(uint8_t m2[ocrypto_srp_PROOF_BYTES],
+                          const uint8_t pub_a[ocrypto_srp_PUBLIC_KEY_BYTES],
+                          const uint8_t m1[ocrypto_srp_PROOF_BYTES],
+                          const uint8_t k[ocrypto_srp_SESSION_KEY_BYTES]);
 /**@}*/
 
 #ifdef __cplusplus
@@ -310,4 +306,3 @@ void ocrypto_srp_proof_m2(
 #endif /* #ifndef OCRYPTO_SRP_H */
 
 /** @} */
-

@@ -1,34 +1,35 @@
 /**
-* MIT License
-*
-* Copyright (c) 2018 Infineon Technologies AG
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE
-*
-*
-* \file ifx_i2c_physical_layer.h
-*
-* \brief   This file defines the API prototype for physical layer of the Infineon I2C Protocol Stack library.
-*
-* \addtogroup  grIFXI2C
-* @{
-*/
+ * MIT License
+ *
+ * Copyright (c) 2018 Infineon Technologies AG
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE
+ *
+ *
+ * \file ifx_i2c_physical_layer.h
+ *
+ * \brief   This file defines the API prototype for physical layer of the
+ * Infineon I2C Protocol Stack library.
+ *
+ * \addtogroup  grIFXI2C
+ * @{
+ */
 
 #ifndef _IFX_I2C_PHYSICAL_LAYER_H_
 #define _IFX_I2C_PHYSICAL_LAYER_H_
@@ -38,22 +39,22 @@ extern "C" {
 #endif
 
 /***********************************************************************************************************************
-* HEADER FILES
-**********************************************************************************************************************/
+ * HEADER FILES
+ **********************************************************************************************************************/
 #include "optiga/ifx_i2c/ifx_i2c_config.h"
 
 /***********************************************************************************************************************
-* MACROS
-**********************************************************************************************************************/
+ * MACROS
+ **********************************************************************************************************************/
 /***********************************************************************************************************************
-* ENUMS
-**********************************************************************************************************************/
+ * ENUMS
+ **********************************************************************************************************************/
 /***********************************************************************************************************************
-* DATA STRUCTURES
-***********************************************************************************************************************/
+ * DATA STRUCTURES
+ ***********************************************************************************************************************/
 /***********************************************************************************************************************
-* API PROTOTYPES
-**********************************************************************************************************************/
+ * API PROTOTYPES
+ **********************************************************************************************************************/
 /**
  * @brief Function for initializing the module.
  *
@@ -62,12 +63,14 @@ extern "C" {
  * @attention This function must be called before using the module.
  *
  * @param[in,out] p_ctx     Pointer to ifx i2c context.
- * @param[in] handler     Function pointer to the event handler of the upper layer.
+ * @param[in] handler     Function pointer to the event handler of the upper
+ * layer.
  *
  * @retval  IFX_I2C_STACK_SUCCESS If initialization was successful.
  * @retval  IFX_I2C_STACK_ERROR If the module is already initialized.
  */
-host_lib_status_t ifx_i2c_pl_init(ifx_i2c_context_t *p_ctx,ifx_i2c_event_handler_t handler);
+host_lib_status_t ifx_i2c_pl_init(ifx_i2c_context_t *p_ctx,
+                                  ifx_i2c_event_handler_t handler);
 
 /**
  * @brief Function for sending a frame.
@@ -83,7 +86,8 @@ host_lib_status_t ifx_i2c_pl_init(ifx_i2c_context_t *p_ctx,ifx_i2c_event_handler
  * @retval  IFX_I2C_STACK_SUCCESS If function was successful.
  * @retval  IFX_I2C_STACK_ERROR If the module is busy.
  */
-host_lib_status_t ifx_i2c_pl_send_frame(ifx_i2c_context_t *p_ctx,uint8_t* p_frame, uint16_t frame_len);
+host_lib_status_t ifx_i2c_pl_send_frame(ifx_i2c_context_t *p_ctx,
+                                        uint8_t *p_frame, uint16_t frame_len);
 
 /**
  * @brief Function for receiving a frame.
@@ -99,7 +103,6 @@ host_lib_status_t ifx_i2c_pl_send_frame(ifx_i2c_context_t *p_ctx,uint8_t* p_fram
  */
 host_lib_status_t ifx_i2c_pl_receive_frame(ifx_i2c_context_t *p_ctx);
 
-
 /**
  * @brief Function for setting slave address.
  *
@@ -112,7 +115,9 @@ host_lib_status_t ifx_i2c_pl_receive_frame(ifx_i2c_context_t *p_ctx);
  * @retval  IFX_I2C_STACK_SUCCESS If function was successful.
  * @retval  IFX_I2C_STACK_ERROR   If setting slave address fails.
  */
-host_lib_status_t ifx_i2c_pl_write_slave_address(ifx_i2c_context_t *p_ctx, uint8_t slave_address, uint8_t storage_type);
+host_lib_status_t ifx_i2c_pl_write_slave_address(ifx_i2c_context_t *p_ctx,
+                                                 uint8_t slave_address,
+                                                 uint8_t storage_type);
 /**
  * @}
  **/

@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ * this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,19 +22,20 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be reverse
- *    engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be
+ * reverse engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
- * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
- * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -59,11 +60,9 @@
 #include <stddef.h>
 #include <stdint.h>
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 /**
  * Length of a public key.
@@ -80,18 +79,19 @@ extern "C" {
  */
 #define ocrypto_ed25519_BYTES (64)
 
-
 /**
  * Ed25519 signature key pair generation.
  *
  * Given a secret key @p sk, the corresponding public key is computed and put
- * into @p pk. The key pair can then be used to sign and verify message signatures.
+ * into @p pk. The key pair can then be used to sign and verify message
+ * signatures.
  *
  * @param[out] pk Generated public key.
  * @param      sk Secret key. Must be pre-filled with random data.
  */
-void ocrypto_ed25519_public_key(uint8_t pk[ocrypto_ed25519_PUBLIC_KEY_BYTES],
-                                const uint8_t sk[ocrypto_ed25519_SECRET_KEY_BYTES]);
+void ocrypto_ed25519_public_key(
+    uint8_t pk[ocrypto_ed25519_PUBLIC_KEY_BYTES],
+    const uint8_t sk[ocrypto_ed25519_SECRET_KEY_BYTES]);
 
 /**
  * Ed25519 signature generate.
@@ -105,8 +105,8 @@ void ocrypto_ed25519_public_key(uint8_t pk[ocrypto_ed25519_PUBLIC_KEY_BYTES],
  * @param      sk    Secret key.
  * @param      pk    Public key.
  */
-void ocrypto_ed25519_sign(uint8_t sig[ocrypto_ed25519_BYTES],
-                          const uint8_t *m, size_t m_len,
+void ocrypto_ed25519_sign(uint8_t sig[ocrypto_ed25519_BYTES], const uint8_t *m,
+                          size_t m_len,
                           const uint8_t sk[ocrypto_ed25519_SECRET_KEY_BYTES],
                           const uint8_t pk[ocrypto_ed25519_PUBLIC_KEY_BYTES]);
 
@@ -135,4 +135,3 @@ int ocrypto_ed25519_verify(const uint8_t sig[ocrypto_ed25519_BYTES],
 #endif /* #ifndef OCRYPTO_ED25519_H */
 
 /** @} */
-
