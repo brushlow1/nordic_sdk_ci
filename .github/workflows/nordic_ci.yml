@@ -1,0 +1,14 @@
+on: [push]
+jobs:
+  build_clang_cppcheck:
+    runs-on: ubuntu-latest
+    container:
+      image: brushlow/nordic_ses:latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Perform build
+        run: emBuild -config "Debug" ./src/nRF5_SDK_17.1.0_ddde560/examples/peripheral/blinky/pca10056/blank/ses/blinky_pca10056.emProject
+      - name: Get build artifact
+        uses: actions/upload-artifact@v2
+        with: 
+          path: ./src/nRF5_SDK_17.1.0_ddde560/examples/peripheral/blinky/pca10056/blank/ses/Output/Debug/Exe/blinky_pca10056.hex
