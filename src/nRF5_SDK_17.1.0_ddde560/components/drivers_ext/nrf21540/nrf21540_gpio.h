@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,27 +22,26 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #ifndef NRF21540_GPIO_H_
 #define NRF21540_GPIO_H_
 
-#include "nrf21540_types.h"
 #include "nrf_gpio.h"
+#include "nrf21540_types.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -58,24 +57,20 @@ void nrf21540_gpio_init(void);
  * @return              NRF_ERROR_INVALID_PARAM when invalid argument given.
  *                      NRF_SUCCESS on success.
  */
-ret_code_t nrf21540_gpio_ant_set(nrf21540_antenna_t antenna);
+ret_code_t  nrf21540_gpio_ant_set(nrf21540_antenna_t antenna);
 
 #if NRF21540_USE_GPIO_MANAGEMENT
 /**@brief Function returns address of task which triggers RX_EN/TX_EN pin
  *        to set nRF21540 radio trasfer direction.
  *
- * @param[in] dir             Direction of the radio transmission. See @ref
- * nrf21540_trx_t.
- * @param[in] required_state  State of RX/TX transfer. See @ref
- * nrf21540_bool_state_t.
+ * @param[in] dir             Direction of the radio transmission. See @ref nrf21540_trx_t.
+ * @param[in] required_state  State of RX/TX transfer. See @ref nrf21540_bool_state_t.
  * @return                    Address of appropriate task.
  */
-uint32_t
-nrf21540_gpio_trx_task_start_address_get(nrf21540_trx_t dir,
-                                         nrf21540_bool_state_t required_state);
+uint32_t nrf21540_gpio_trx_task_start_address_get(nrf21540_trx_t dir,
+                                                  nrf21540_bool_state_t required_state);
 
-/**@brief Function configures the chip and peripherals for TX/RX transfer
- * purpose.
+/**@brief Function configures the chip and peripherals for TX/RX transfer purpose.
  *
  * @details enables/disables RX/TX transfers.
  *
@@ -85,8 +80,7 @@ void nrf21540_gpio_trx_enable(nrf21540_trx_t dir);
 
 /**@brief Function choses one of two predefined power modes in nRF21540.
  *
- * @details Refer to nRF21540 Objective Product Specification, section: TX power
- * control.
+ * @details Refer to nRF21540 Objective Product Specification, section: TX power control.
  *
  * @param[in] mode  Power mode. See @ref nrf21540_pwr_mode_t.
  * @return          NRF_ERROR_INVALID_PARAM when invalid argument given.
@@ -100,4 +94,4 @@ ret_code_t nrf21540_gpio_pwr_mode_set(nrf21540_pwr_mode_t mode);
 }
 #endif
 
-#endif // NRF21540_GPIO_H_
+#endif  // NRF21540_GPIO_H_

@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,29 +22,28 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #include "app_usbd_serial_num.h"
 
-#include "app_usbd.h"
-#include <inttypes.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <inttypes.h>
+#include "app_usbd.h"
 
 #define SERIAL_NUMBER_STRING_SIZE (12)
 
@@ -54,30 +53,32 @@
  */
 uint8_t g_extern_serial_number[SERIAL_NUMBER_STRING_SIZE + 1];
 
-/**@brief Function for creating the serial number string from a regular C
- * string.
- *
- * @param[in]  p_serial_number_string  The serial number string. Must be
- * terminated with \0.
- */
-static void string_create(char *p_serial_number_string) {
 
-  for (uint32_t i = 0; i < strlen(p_serial_number_string); i++) {
-    g_extern_serial_number[i] = (uint8_t)p_serial_number_string[i];
-  }
+/**@brief Function for creating the serial number string from a regular C string.
+ *
+ * @param[in]  p_serial_number_string  The serial number string. Must be terminated with \0.
+ */
+static void string_create(char * p_serial_number_string)
+{
+
+    for (uint32_t i = 0; i < strlen(p_serial_number_string); i++)
+    {
+        g_extern_serial_number[i] = (uint8_t)p_serial_number_string[i];
+    }
 }
 
-void app_usbd_serial_num_generate(void) {
-  char serial_number_string[SERIAL_NUMBER_STRING_SIZE + 1];
-  const uint16_t serial_num_high_bytes =
-      (uint16_t)NRF_FICR->DEVICEADDR[1] |
-      0xC000; // The masking makes the address match the Random Static BLE
-              // address.
-  const uint32_t serial_num_low_bytes = NRF_FICR->DEVICEADDR[0];
 
-  (void)snprintf(serial_number_string, SERIAL_NUMBER_STRING_SIZE + 1,
-                 "%04" PRIX16 "%08" PRIX32, serial_num_high_bytes,
-                 serial_num_low_bytes);
+void app_usbd_serial_num_generate(void)
+{
+    char serial_number_string[SERIAL_NUMBER_STRING_SIZE + 1];
+    const uint16_t serial_num_high_bytes = (uint16_t)NRF_FICR->DEVICEADDR[1] | 0xC000; // The masking makes the address match the Random Static BLE address.
+    const uint32_t serial_num_low_bytes  = NRF_FICR->DEVICEADDR[0];
 
-  string_create(serial_number_string);
+    (void)snprintf(serial_number_string,
+                   SERIAL_NUMBER_STRING_SIZE + 1,
+                   "%04"PRIX16"%08"PRIX32,
+                   serial_num_high_bytes,
+                   serial_num_low_bytes);
+
+    string_create(serial_number_string);
 }

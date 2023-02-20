@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,20 +22,19 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -43,16 +42,14 @@
  * @defgroup nrf_oberon_curve25519 ECC Curve25519 low-level APIs
  * @ingroup nrf_oberon
  * @{
- * @brief Type declarations and APIs for low-level elliptic curve point
- * operations based on Curve25519.
+ * @brief Type declarations and APIs for low-level elliptic curve point operations
+ * based on Curve25519.
  *
  * Curve25519 is an elliptic curve offering 128 bits of security. It is designed
  * for use in the Elliptic Curve Diffie-Hellman (ECDH) key agreement scheme.
  *
- * @see [RFC 7748 - Elliptic Curves for
- * Security](https://tools.ietf.org/html/rfc7748)
- * @see [Curve25519: high-speed elliptic-curve
- * cryptography](http://cr.yp.to/ecdh.html)
+ * @see [RFC 7748 - Elliptic Curves for Security](https://tools.ietf.org/html/rfc7748)
+ * @see [Curve25519: high-speed elliptic-curve cryptography](http://cr.yp.to/ecdh.html)
  */
 
 #ifndef OCRYPTO_CURVE25519_H
@@ -60,9 +57,11 @@
 
 #include <stdint.h>
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 
 /**
  * Length of a scalar.
@@ -73,6 +72,7 @@ extern "C" {
  * Length of a curve point.
  */
 #define ocrypto_curve25519_BYTES (32)
+
 
 /**
  * Curve25519 scalar multiplication `r = n * basePoint`.
@@ -117,3 +117,4 @@ void ocrypto_curve25519_scalarmult(
 #endif /* #ifndef OCRYPTO_CURVE25519_H */
 
 /** @} */
+

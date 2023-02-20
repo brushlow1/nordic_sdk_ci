@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,20 +22,19 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 #ifndef MPU6050_H
@@ -51,14 +50,14 @@ extern "C" {
 #endif
 
 /** @file
- * @brief MPU6050 gyro/accelerometer driver.
- *
- *
- * @defgroup nrf_drivers_mpu6050 MPU6050 gyro/accelerometer driver
- * @{
- * @ingroup ext_drivers
- * @brief MPU6050 gyro/accelerometer driver.
- */
+* @brief MPU6050 gyro/accelerometer driver.
+*
+*
+* @defgroup nrf_drivers_mpu6050 MPU6050 gyro/accelerometer driver
+* @{
+* @ingroup ext_drivers
+* @brief MPU6050 gyro/accelerometer driver.
+*/
 
 /**
  * @brief Function for initializing MPU6050 and verifies it's on the bus.
@@ -84,13 +83,11 @@ bool mpu6050_register_write(uint8_t register_address, const uint8_t value);
   Reads one or more consecutive registers.
   @param[in]  register_address Register address to start reading from
   @param[in]  number_of_bytes Number of bytes to read
-  @param[out] destination Pointer to a data buffer where read data will be
-  stored
+  @param[out] destination Pointer to a data buffer where read data will be stored
   @retval true Register read succeeded
   @retval false Register read failed
 */
-bool mpu6050_register_read(uint8_t register_address, uint8_t *destination,
-                           uint8_t number_of_bytes);
+bool mpu6050_register_read(uint8_t register_address, uint8_t *destination, uint8_t number_of_bytes);
 
 /**
   @brief Function for reading and verifying MPU6050 product ID.
@@ -104,6 +101,7 @@ bool mpu6050_verify_product_id(void);
  **/
 
 /*lint --flb "Leave library region" */
+
 
 #ifdef __cplusplus
 }

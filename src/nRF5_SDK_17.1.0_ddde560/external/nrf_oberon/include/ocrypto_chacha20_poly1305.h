@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,20 +22,19 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -43,23 +42,22 @@
  * @defgroup nrf_oberon_chacha_poly ChaCha20-Poly1305
  * @ingroup nrf_oberon
  * @{
- * @brief ChaCha20-Poly1305 is an authenticated encryption algorithm with
- * optional additional authenticated data developed by Daniel J.Bernstein.
+ * @brief ChaCha20-Poly1305 is an authenticated encryption algorithm with optional
+ *        additional authenticated data developed by Daniel J.Bernstein.
  * @}
  *
  * @defgroup nrf_oberon_chacha_poly_apis ChaCha20-Poly1305 APIs
  * @ingroup nrf_oberon_chacha_poly
  * @{
- * @brief Type declaration and APIs for authenticated encryption and additional
- * data using the ChaCha20-Poly1305 algorithm.
+ * @brief Type declaration and APIs for authenticated encryption and additional data using
+ *        the ChaCha20-Poly1305 algorithm.
  *
  * ChaCha20-Poly1305 is an authenticated encryption algorithm with optional
  * additional authenticated data developed by Daniel J.Bernstein.
  *
  * The ChaCha20 stream cipher is combined with the Poly1305 authenticator.
  *
- * @see [RFC 7539 - ChaCha20 and Poly1305 for IETF
- * Protocols](http://tools.ietf.org/html/rfc7539)
+ * @see [RFC 7539 - ChaCha20 and Poly1305 for IETF Protocols](http://tools.ietf.org/html/rfc7539)
  */
 
 #ifndef OCRYPTO_CHACHA20_POLY1305_H
@@ -68,9 +66,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 
 /**
  * Length of the encryption key.
@@ -86,6 +86,7 @@ extern "C" {
  * Length of the authentication tag.
  */
 #define ocrypto_chacha20_poly1305_TAG_BYTES (16)
+
 
 /**@{*/
 /**
@@ -104,8 +105,7 @@ extern "C" {
  * @param      m     Input message.
  * @param      m_len Length of @p m and @p c.
  * @param      n     Nonce.
- * @param      n_len Length of @p n. 0 <= @p n_len <= @c
- * ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
+ * @param      n_len Length of @p n. 0 <= @p n_len <= @c ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
  * @param      k     Encryption key.
  *
  * @remark @p c and @p m can point to the same address.
@@ -114,8 +114,10 @@ extern "C" {
  *         different nonce @p n must be used.
  */
 void ocrypto_chacha20_poly1305_encrypt(
-    uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES], uint8_t *c,
-    const uint8_t *m, size_t m_len, const uint8_t *n, size_t n_len,
+    uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES],
+    uint8_t *c,
+    const uint8_t *m, size_t m_len,
+    const uint8_t *n, size_t n_len,
     const uint8_t k[ocrypto_chacha20_poly1305_KEY_BYTES]);
 
 /**
@@ -126,8 +128,8 @@ void ocrypto_chacha20_poly1305_encrypt(
  * length @p m_len as the input message @p m and is put into @p c.
  *
  * Additionally, the ciphertext @p c, as well as the additional authenticated
- * data @p a, is authenticated with a tag that is generated with Poly1305 using
- * a unique subkey derived from @p k and @p n, and then put into @p tag.
+ * data @p a, is authenticated with a tag that is generated with Poly1305 using a
+ * unique subkey derived from @p k and @p n, and then put into @p tag.
  *
  * @param[out] tag   Generated authentication tag.
  * @param[out] c     Generated ciphertext. Same length as input message.
@@ -136,8 +138,7 @@ void ocrypto_chacha20_poly1305_encrypt(
  * @param      a     Additional authenticated data.
  * @param      a_len Length of @p a.
  * @param      n     Nonce.
- * @param      n_len Length of @p n. 0 <= @p n_len <= @c
- * ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
+ * @param      n_len Length of @p n. 0 <= @p n_len <= @c ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
  * @param      k     Encryption key.
  *
  * @remark @p c and @p m can point to the same address.
@@ -147,8 +148,10 @@ void ocrypto_chacha20_poly1305_encrypt(
  *         must be used.
  */
 void ocrypto_chacha20_poly1305_encrypt_aad(
-    uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES], uint8_t *c,
-    const uint8_t *m, size_t m_len, const uint8_t *a, size_t a_len,
+    uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES],
+    uint8_t *c,
+    const uint8_t *m, size_t m_len,
+    const uint8_t *a, size_t a_len,
     const uint8_t *n, size_t n_len,
     const uint8_t k[ocrypto_chacha20_poly1305_KEY_BYTES]);
 /**@}*/
@@ -167,8 +170,7 @@ void ocrypto_chacha20_poly1305_encrypt_aad(
  * @param      c     Received ciphertext.
  * @param      c_len Length of @p c and @p m.
  * @param      n     Nonce.
- * @param      n_len Length of @p n. 0 <= @p n_len <= @c
- * ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
+ * @param      n_len Length of @p n. 0 <= @p n_len <= @c ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
  * @param      k     Encryption key.
  *
  * @retval 0  If @p tag is valid.
@@ -177,8 +179,10 @@ void ocrypto_chacha20_poly1305_encrypt_aad(
  * @remark @p m and @p c can point to the same address.
  */
 int ocrypto_chacha20_poly1305_decrypt(
-    const uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES], uint8_t *m,
-    const uint8_t *c, size_t c_len, const uint8_t *n, size_t n_len,
+    const uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES],
+    uint8_t *m,
+    const uint8_t *c, size_t c_len,
+    const uint8_t *n, size_t n_len,
     const uint8_t k[ocrypto_chacha20_poly1305_KEY_BYTES]);
 
 /**
@@ -196,8 +200,7 @@ int ocrypto_chacha20_poly1305_decrypt(
  * @param      a     Received additional authenticated data.
  * @param      a_len Length of @p a.
  * @param      n     Nonce.
- * @param      n_len Length of @p n. 0 <= @p n_len <= @c
- * ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
+ * @param      n_len Length of @p n. 0 <= @p n_len <= @c ocrypto_chacha20_poly1305_NONCE_BYTES_MAX.
  * @param      k     Encryption key.
  *
  * @retval 0  If @p tag is valid.
@@ -206,8 +209,10 @@ int ocrypto_chacha20_poly1305_decrypt(
  * @remark @p m and @p c can point to the same address.
  */
 int ocrypto_chacha20_poly1305_decrypt_aad(
-    const uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES], uint8_t *m,
-    const uint8_t *c, size_t c_len, const uint8_t *a, size_t a_len,
+    const uint8_t tag[ocrypto_chacha20_poly1305_TAG_BYTES],
+    uint8_t *m,
+    const uint8_t *c, size_t c_len,
+    const uint8_t *a, size_t a_len,
     const uint8_t *n, size_t n_len,
     const uint8_t k[ocrypto_chacha20_poly1305_KEY_BYTES]);
 /**@}*/
@@ -219,3 +224,4 @@ int ocrypto_chacha20_poly1305_decrypt_aad(
 #endif /* #ifndef OCRYPTO_CHACHA20_POLY1305_H */
 
 /** @} */
+

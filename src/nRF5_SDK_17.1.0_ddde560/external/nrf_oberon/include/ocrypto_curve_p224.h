@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,20 +22,19 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -43,8 +42,8 @@
  * @defgroup nrf_oberon_p224 ECC secp224r1 low-level APIs
  * @ingroup nrf_oberon
  * @{
- * @brief Type declarations and APIs for low-level elliptic curve point
- * operations based on the NIST secp224r1 curve.
+ * @brief Type declarations and APIs for low-level elliptic curve point operations
+ * based on the NIST secp224r1 curve.
  */
 
 #ifndef OCRYPTO_CURVE_P224_H
@@ -56,13 +55,15 @@
 extern "C" {
 #endif
 
+
 // (x,y) only jacobian coordinates
 /**@cond */
 typedef struct {
-  ocrypto_mod_p224 x;
-  ocrypto_mod_p224 y;
+    ocrypto_mod_p224 x;
+    ocrypto_mod_p224 y;
 } ocrypto_cp_p224;
 /**@endcond */
+
 
 /** Load r.x from bytes, keep r.y.
  *
@@ -111,8 +112,7 @@ void ocrypto_curve_p224_to56bytes(uint8_t r[56], ocrypto_cp_p224 *p);
  * @retval 0  If 0 < s < q.
  * @retval 1  If s > q.
  */
-int ocrypto_curve_p224_scalarmult(ocrypto_cp_p224 *r, const ocrypto_cp_p224 *p,
-                                  const ocrypto_sc_p224 *s);
+int ocrypto_curve_p224_scalarmult(ocrypto_cp_p224 *r, const ocrypto_cp_p224 *p, const ocrypto_sc_p224 *s);
 
 /** P224 scalar base multiplication.
  *
@@ -126,8 +126,7 @@ int ocrypto_curve_p224_scalarmult(ocrypto_cp_p224 *r, const ocrypto_cp_p224 *p,
  * @retval 0  If 0 < s < q.
  * @retval 1  If s > q.
  */
-int ocrypto_curve_p224_scalarmult_base(ocrypto_cp_p224 *r,
-                                       const ocrypto_sc_p224 *s);
+int ocrypto_curve_p224_scalarmult_base(ocrypto_cp_p224 *r, const ocrypto_sc_p224 *s);
 
 /** P224 add and double
  *
@@ -143,8 +142,8 @@ int ocrypto_curve_p224_scalarmult_base(ocrypto_cp_p224 *r,
  * @retval -1 if r = [0,0].
  * @etval 0 if successfull.
  */
-int ocrypto_curve_p224_add(ocrypto_cp_p224 *r, const ocrypto_cp_p224 *p,
-                           const ocrypto_cp_p224 *q);
+int ocrypto_curve_p224_add(ocrypto_cp_p224 *r, const ocrypto_cp_p224 *p, const ocrypto_cp_p224 *q);
+
 
 #ifdef __cplusplus
 }

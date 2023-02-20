@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,20 +22,19 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -58,9 +57,11 @@
 
 #include "ocrypto_sha512.h"
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 
 /**
  * Length of SHA-384 hash.
@@ -70,6 +71,7 @@ extern "C" {
 /**@cond */
 typedef ocrypto_sha512_ctx ocrypto_sha384_ctx;
 /**@endcond */
+
 
 /**@name Incremental SHA-384 generator.
  *
@@ -84,7 +86,8 @@ typedef ocrypto_sha512_ctx ocrypto_sha384_ctx;
  *
  * @param[out] ctx Generator state.
  */
-void ocrypto_sha384_init(ocrypto_sha384_ctx *ctx);
+void ocrypto_sha384_init(
+    ocrypto_sha384_ctx *ctx);
 
 /**
  * SHA-384 incremental data input.
@@ -98,11 +101,11 @@ void ocrypto_sha384_init(ocrypto_sha384_ctx *ctx);
  * @param      in_len Length of @p in.
  *
  * @remark Initialization of the generator state @p ctx through
- *         @c ocrypto_sha384_init is required before this function can be
- * called.
+ *         @c ocrypto_sha384_init is required before this function can be called.
  */
-void ocrypto_sha384_update(ocrypto_sha384_ctx *ctx, const uint8_t *in,
-                           size_t in_len);
+void ocrypto_sha384_update(
+    ocrypto_sha384_ctx *ctx,
+    const uint8_t *in, size_t in_len);
 
 /**
  * SHA-384 output.
@@ -114,29 +117,29 @@ void ocrypto_sha384_update(ocrypto_sha384_ctx *ctx, const uint8_t *in,
  * @param[out] r   Generated hash value.
  *
  * @remark Initialization of the generator state @p ctx through
- *         @c ocrypto_sha384_init is required before this function can be
- * called.
+ *         @c ocrypto_sha384_init is required before this function can be called.
  *
  * @remark After return, the generator state @p ctx must no longer be used with
  *         @c ocrypto_sha384_update and @c ocrypto_sha384_final unless it is
  *         reinitialized using @c ocrypto_sha384_init.
  */
-void ocrypto_sha384_final(ocrypto_sha384_ctx *ctx,
-                          uint8_t r[ocrypto_sha384_BYTES]);
+void ocrypto_sha384_final(
+    ocrypto_sha384_ctx *ctx,
+    uint8_t r[ocrypto_sha384_BYTES]);
 /**@}*/
 
 /**
  * SHA-384 hash.
  *
- * The SHA-384 hash of a given input message @p in is computed and put into @p
- * r.
+ * The SHA-384 hash of a given input message @p in is computed and put into @p r.
  *
  * @param[out] r      Generated hash.
  * @param      in     Input data.
  * @param      in_len Length of @p in.
  */
-void ocrypto_sha384(uint8_t r[ocrypto_sha384_BYTES], const uint8_t *in,
-                    size_t in_len);
+void ocrypto_sha384(
+    uint8_t r[ocrypto_sha384_BYTES],
+    const uint8_t *in, size_t in_len);
 
 #ifdef __cplusplus
 }

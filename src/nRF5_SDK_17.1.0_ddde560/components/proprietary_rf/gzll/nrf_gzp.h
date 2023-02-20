@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,20 +22,19 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 /**
@@ -54,210 +53,168 @@
 extern "C" {
 #endif
 
+
 /**
- * @defgroup gzp_02_api Gazell Pairing
- * @{
- * @ingroup modules_02_gzp
- * @brief Gazell Pairing Application Programming Interface (API).
- */
+* @defgroup gzp_02_api Gazell Pairing
+* @{
+* @ingroup modules_02_gzp
+* @brief Gazell Pairing Application Programming Interface (API).
+*/
+
 
 /******************************************************************************/
 /** @name Pairing configuration defines
  *  @{ */
 /******************************************************************************/
 
-#define GZP_PAIRING_PIPE 0 ///< Pipe reserved for initial pairing communication.
-#define GZP_DATA_PIPE                                                          \
-  1 ///< Pipe reserved for GZP encrypted data communication (one pipe only).
-#define GZP_TX_RX_TRANS_DELAY                                                  \
-  10 ///< Time to wait between request and fetch packets in RX_PERIODS (2
-     ///< timeslot periods)
-#define GZP_SYSTEM_ADDRESS_WIDTH 4 ///< Must equal Gazell base address length.
 
-#define GZP_VALIDATION_ID                                                      \
-  {                                                                            \
-    0x32, 0x53, 0x66                                                           \
-  } ///< Validation ID. Required to be shared by Host and Device. Not a secret.
-#define GZP_VALIDATION_ID_LENGTH 3 ///< Validation ID length in bytes.
-#define GZP_HOST_ID_LENGTH 5       ///< Host ID length in bytes.
-#define GZP_SESSION_TOKEN_LENGTH                                               \
-  GZP_HOST_ID_LENGTH ///< Session token length in bytes.
-#define GZP_DYN_KEY_LENGTH                                                     \
-  (16 - GZP_VALIDATION_ID_LENGTH) ///< Dynamic key length in bytes.
+#define GZP_PAIRING_PIPE 0             ///< Pipe reserved for initial pairing communication.
+#define GZP_DATA_PIPE 1                ///< Pipe reserved for GZP encrypted data communication (one pipe only).
+#define GZP_TX_RX_TRANS_DELAY 10       ///< Time to wait between request and fetch packets in RX_PERIODS (2 timeslot periods)
+#define GZP_SYSTEM_ADDRESS_WIDTH   4     ///< Must equal Gazell base address length.
 
-#define GZP_HOST_RX_POWER_THRESHOLD                                            \
-  -64 ///< RSSI threshold for when signal strength in RX packet power is high
-      ///< enough.
+
+#define GZP_VALIDATION_ID {0x32, 0x53, 0x66}                ///< Validation ID. Required to be shared by Host and Device. Not a secret.
+#define GZP_VALIDATION_ID_LENGTH 3                          ///< Validation ID length in bytes.
+#define GZP_HOST_ID_LENGTH 5                                ///< Host ID length in bytes.
+#define GZP_SESSION_TOKEN_LENGTH GZP_HOST_ID_LENGTH         ///< Session token length in bytes.
+#define GZP_DYN_KEY_LENGTH (16 - GZP_VALIDATION_ID_LENGTH)  ///< Dynamic key length in bytes.
+
+#define GZP_HOST_RX_POWER_THRESHOLD -64 ///< RSSI threshold for when signal strength in RX packet power is high enough.
 
 /** @} */
+
 
 /******************************************************************************/
 /** @name Device -> Host packet definitions
  *  @{ */
 /******************************************************************************/
 
-#define GZP_CMD_HOST_ADDRESS_REQ_PAYLOAD_LENGTH                                \
-  1 ///< "Host address request" packet, payload length
+#define GZP_CMD_HOST_ADDRESS_REQ_PAYLOAD_LENGTH 1   ///< "Host address request" packet, payload length
 
-#define GZP_CMD_HOST_ADDRESS_FETCH_PAYLOAD_LENGTH                              \
-  1 ///< "Host address fetch" packet, payload length
+#define GZP_CMD_HOST_ADDRESS_FETCH_PAYLOAD_LENGTH 1 ///< "Host address fetch" packet, payload length
 
-#define GZP_CMD_HOST_ID_REQ_SESSION_TOKEN                                      \
-  1 ///< "Host ID request" packet, session token position
-#define GZP_CMD_HOST_ID_REQ_PAYLOAD_LENGTH                                     \
-  (GZP_CMD_HOST_ID_REQ_SESSION_TOKEN +                                         \
-   GZP_SESSION_TOKEN_LENGTH) ///< "Host ID request" payload length
+#define GZP_CMD_HOST_ID_REQ_SESSION_TOKEN 1         ///< "Host ID request" packet, session token position
+#define GZP_CMD_HOST_ID_REQ_PAYLOAD_LENGTH (GZP_CMD_HOST_ID_REQ_SESSION_TOKEN + GZP_SESSION_TOKEN_LENGTH)  ///< "Host ID request" payload length
 
 #if (GZP_CMD_HOST_ID_REQ_PAYLOAD_LENGTH > 17)
 #error GZP_SESSION_TOKEN_LENGTH too long.
 #endif
 
-#define GZP_CMD_HOST_ID_FETCH_VALIDATION_ID 1 ///< "Host ID fetch" packet
-#define GZP_CMD_HOST_ID_FETCH_PAYLOAD_LENGTH                                   \
-  (GZP_CMD_HOST_ID_FETCH_VALIDATION_ID +                                       \
-   GZP_VALIDATION_ID_LENGTH) ///< "Host ID fetch" payload length
+
+#define GZP_CMD_HOST_ID_FETCH_VALIDATION_ID 1   ///< "Host ID fetch" packet
+#define GZP_CMD_HOST_ID_FETCH_PAYLOAD_LENGTH (GZP_CMD_HOST_ID_FETCH_VALIDATION_ID + GZP_VALIDATION_ID_LENGTH) ///< "Host ID fetch" payload length
 
 #if (GZP_CMD_HOST_ID_FETCH_PAYLOAD_LENGTH > 17)
 #error GZP_VALIDATION_ID_LENGTH set too long.
 #endif
 
-#define GZP_CMD_KEY_UPDATE_PREPARE_PAYLOAD_LENGTH                              \
-  1 ///< "Key update prepare" payload length
+#define GZP_CMD_KEY_UPDATE_PREPARE_PAYLOAD_LENGTH 1   ///< "Key update prepare" payload length
 
-#define GZP_CMD_KEY_UPDATE_VALIDATION_ID                                       \
-  1 ///< "Key update" packet, validation ID position
-#define GZP_CMD_KEY_UPDATE_NEW_KEY                                             \
-  (GZP_CMD_KEY_UPDATE_VALIDATION_ID +                                          \
-   GZP_VALIDATION_ID_LENGTH) ///< "Key update" packet, new key position
-#define GZP_CMD_KEY_UPDATE_PAYLOAD_LENGTH                                      \
-  (GZP_CMD_KEY_UPDATE_NEW_KEY +                                                \
-   GZP_DYN_KEY_LENGTH) ///< "Key update" packet, payload length
+#define GZP_CMD_KEY_UPDATE_VALIDATION_ID 1            ///< "Key update" packet, validation ID position
+#define GZP_CMD_KEY_UPDATE_NEW_KEY (GZP_CMD_KEY_UPDATE_VALIDATION_ID + GZP_VALIDATION_ID_LENGTH)  ///< "Key update" packet, new key position
+#define GZP_CMD_KEY_UPDATE_PAYLOAD_LENGTH (GZP_CMD_KEY_UPDATE_NEW_KEY + GZP_DYN_KEY_LENGTH)       ///< "Key update" packet, payload length
 
 #if (GZP_CMD_KEY_UPDATE_PAYLOAD_LENGTH > 17)
 #error Sum (GZP_VALIDATION_ID_LENGTH + GZP_DYN_KEY_LENGTH) too high.
 #endif
 
-#define GZP_CMD_ENCRYPTED_USER_DATA_VALIDATION_ID                              \
-  1 ///< "Encrypted user data" packet, validation ID position
-#define GZP_CMD_ENCRYPTED_USER_DATA_PAYLOAD                                    \
-  ((GZP_CMD_ENCRYPTED_USER_DATA_VALIDATION_ID +                                \
-    GZP_VALIDATION_ID_LENGTH)) ///< "Encrypted user data" packet, user data
-                               ///< position
-#define GZP_ENCRYPTED_USER_DATA_PACKET_OVERHEAD                                \
-  (GZP_CMD_ENCRYPTED_USER_DATA_VALIDATION_ID +                                 \
-   GZP_VALIDATION_ID_LENGTH) ///< "Encrypted user data" packet, packet overhead
-                             ///< length
-#define GZP_ENCRYPTED_USER_DATA_MAX_LENGTH                                     \
-  (17 -                                                                        \
-   GZP_ENCRYPTED_USER_DATA_PACKET_OVERHEAD) ///< "Encrypted user data" packet,
-                                            ///< max payload length
+
+#define GZP_CMD_ENCRYPTED_USER_DATA_VALIDATION_ID 1  ///< "Encrypted user data" packet, validation ID position
+#define GZP_CMD_ENCRYPTED_USER_DATA_PAYLOAD ((GZP_CMD_ENCRYPTED_USER_DATA_VALIDATION_ID + GZP_VALIDATION_ID_LENGTH)) ///< "Encrypted user data" packet, user data position
+#define GZP_ENCRYPTED_USER_DATA_PACKET_OVERHEAD ( GZP_CMD_ENCRYPTED_USER_DATA_VALIDATION_ID + GZP_VALIDATION_ID_LENGTH)        ///< "Encrypted user data" packet, packet overhead length
+#define GZP_ENCRYPTED_USER_DATA_MAX_LENGTH (17 - GZP_ENCRYPTED_USER_DATA_PACKET_OVERHEAD) ///< "Encrypted user data" packet, max payload length
 
 #if (GZP_MAX_FW_PAYLOAD_LENGTH < 17)
-#error GZP_MAX_FW_PAYLOAD_LENGTH must be greater or equal to 17.
+  #error GZP_MAX_FW_PAYLOAD_LENGTH must be greater or equal to 17.
 #endif
 
-#define GZP_CMD_FETCH_RESP_PAYLOAD_LENGTH                                      \
-  1 ///< General "fetch response" packet, payload_length
+#define GZP_CMD_FETCH_RESP_PAYLOAD_LENGTH 1    ///< General "fetch response" packet, payload_length
 
 /** @} */
+
 
 /******************************************************************************/
 /** @name Host -> Device packet definitions
  *  @{ */
 /******************************************************************************/
 
-#define GZP_CMD_HOST_ADDRESS_RESP_ADDRESS                                      \
-  1 ///< "Host address fetch" response packet, address position
-#define GZP_CMD_HOST_ADDRESS_RESP_PAYLOAD_LENGTH                               \
-  (GZP_CMD_HOST_ADDRESS_RESP_ADDRESS +                                         \
-   GZP_SYSTEM_ADDRESS_WIDTH) ///<  ///< "Host address fetch" response packet,
-                             ///<  payload length
+
+#define GZP_CMD_HOST_ADDRESS_RESP_ADDRESS 1      ///< "Host address fetch" response packet, address position
+#define GZP_CMD_HOST_ADDRESS_RESP_PAYLOAD_LENGTH (GZP_CMD_HOST_ADDRESS_RESP_ADDRESS + GZP_SYSTEM_ADDRESS_WIDTH) ///<  ///< "Host address fetch" response packet, payload length
 
 #if (GZP_MAX_ACK_PAYLOAD_LENGTH < GZP_CMD_HOST_ADDRESS_RESP_PAYLOAD_LENGTH)
-#error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_HOST_ADDRESS_RESP_PAYLOAD_LENGTH.
+  #error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_HOST_ADDRESS_RESP_PAYLOAD_LENGTH.
 #endif
 
-#define GZP_CMD_HOST_ID_FETCH_RESP_VALIDATION_ID                               \
-  1 ///< "Host ID fetch" response packet, validation ID position
-#define GZP_CMD_HOST_ID_FETCH_RESP_STATUS                                      \
-  (GZP_CMD_HOST_ID_FETCH_RESP_VALIDATION_ID +                                  \
-   GZP_VALIDATION_ID_LENGTH) ///< "Host ID fetch" response packet, status
-                             ///< position
-#define GZP_CMD_HOST_ID_FETCH_RESP_HOST_ID                                     \
-  (GZP_CMD_HOST_ID_FETCH_RESP_STATUS +                                         \
-   1) ///< "Host ID fetch" response packet, Host ID position
-#define GZP_CMD_HOST_ID_FETCH_RESP_PAYLOAD_LENGTH                              \
-  (GZP_CMD_HOST_ID_FETCH_RESP_HOST_ID +                                        \
-   GZP_HOST_ID_LENGTH) ///< "Host ID fetch" response packet, payload length
+
+#define GZP_CMD_HOST_ID_FETCH_RESP_VALIDATION_ID 1 ///< "Host ID fetch" response packet, validation ID position
+#define GZP_CMD_HOST_ID_FETCH_RESP_STATUS (GZP_CMD_HOST_ID_FETCH_RESP_VALIDATION_ID + GZP_VALIDATION_ID_LENGTH)  ///< "Host ID fetch" response packet, status position
+#define GZP_CMD_HOST_ID_FETCH_RESP_HOST_ID (GZP_CMD_HOST_ID_FETCH_RESP_STATUS + 1)  ///< "Host ID fetch" response packet, Host ID position
+#define GZP_CMD_HOST_ID_FETCH_RESP_PAYLOAD_LENGTH (GZP_CMD_HOST_ID_FETCH_RESP_HOST_ID + GZP_HOST_ID_LENGTH)   ///< "Host ID fetch" response packet, payload length
 
 #if (GZP_MAX_ACK_PAYLOAD_LENGTH < GZP_CMD_HOST_ID_FETCH_RESP_PAYLOAD_LENGTH)
-#error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_HOST_ID_FETCH_RESP_PAYLOAD_LENGTH.
+  #error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_HOST_ID_FETCH_RESP_PAYLOAD_LENGTH.
 #endif
 
-#define GZP_CMD_KEY_UPDATE_PREPARE_RESP_SESSION_TOKEN                          \
-  1 ///< "Key update prepare" response packet, session token position
-#define GZP_CMD_KEY_UPDATE_PREPARE_RESP_PAYLOAD_LENGTH                         \
-  (GZP_CMD_KEY_UPDATE_PREPARE_RESP_SESSION_TOKEN +                             \
-   GZP_SESSION_TOKEN_LENGTH) ///< "Key update prepare" response packet, payload
-                             ///< length position
 
-#if (GZP_MAX_ACK_PAYLOAD_LENGTH <                                              \
-     GZP_CMD_KEY_UPDATE_PREPARE_RESP_PAYLOAD_LENGTH)
-#error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_KEY_UPDATE_PREPARE_RESP_PAYLOAD_LENGTH.
+#define GZP_CMD_KEY_UPDATE_PREPARE_RESP_SESSION_TOKEN 1  ///< "Key update prepare" response packet, session token position
+#define GZP_CMD_KEY_UPDATE_PREPARE_RESP_PAYLOAD_LENGTH (GZP_CMD_KEY_UPDATE_PREPARE_RESP_SESSION_TOKEN + GZP_SESSION_TOKEN_LENGTH) ///< "Key update prepare" response packet, payload length position
+
+#if (GZP_MAX_ACK_PAYLOAD_LENGTH < GZP_CMD_KEY_UPDATE_PREPARE_RESP_PAYLOAD_LENGTH)
+  #error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_KEY_UPDATE_PREPARE_RESP_PAYLOAD_LENGTH.
 #endif
 
-#define GZP_CMD_ENCRYPTED_USER_DATA_RESP_SESSION_TOKEN                         \
-  1 ///< "Encrypted user data" response packet, session token position
-#define GZP_CMD_ENCRYPTED_USER_DATA_RESP_VALIDATION_ID                         \
-  (GZP_CMD_ENCRYPTED_USER_DATA_RESP_SESSION_TOKEN +                            \
-   GZP_SESSION_TOKEN_LENGTH) ///< "Encrypted user data" response packet,
-                             ///< validation ID position
-#define GZP_CMD_ENCRYPTED_USER_DATA_RESP_PAYLOAD_LENGTH                        \
-  (GZP_CMD_ENCRYPTED_USER_DATA_RESP_VALIDATION_ID +                            \
-   GZP_VALIDATION_ID_LENGTH) ///< "Encrypted user data" response packet, payload
-                             ///< length position
 
-#if (GZP_MAX_ACK_PAYLOAD_LENGTH <                                              \
-     GZP_CMD_ENCRYPTED_USER_DATA_RESP_PAYLOAD_LENGTH)
-#error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_ENCRYPTED_USER_DATA_RESP_PAYLOAD_LENGTH.
+#define GZP_CMD_ENCRYPTED_USER_DATA_RESP_SESSION_TOKEN 1      ///< "Encrypted user data" response packet, session token position
+#define GZP_CMD_ENCRYPTED_USER_DATA_RESP_VALIDATION_ID (GZP_CMD_ENCRYPTED_USER_DATA_RESP_SESSION_TOKEN + GZP_SESSION_TOKEN_LENGTH) ///< "Encrypted user data" response packet, validation ID position
+#define GZP_CMD_ENCRYPTED_USER_DATA_RESP_PAYLOAD_LENGTH (GZP_CMD_ENCRYPTED_USER_DATA_RESP_VALIDATION_ID + GZP_VALIDATION_ID_LENGTH) ///< "Encrypted user data" response packet, payload length position
+
+#if (GZP_MAX_ACK_PAYLOAD_LENGTH < GZP_CMD_ENCRYPTED_USER_DATA_RESP_PAYLOAD_LENGTH)
+  #error GZP_MAX_ACK_PAYLOAD_LENGTH must be greater or equal to GZP_CMD_ENCRYPTED_USER_DATA_RESP_PAYLOAD_LENGTH.
 #endif
 
 #if (GZP_VALIDATION_ID_LENGTH > GZP_HOST_ID_LENGTH)
-#error GZP_HOST_ID_LENGTH should be greater or equal to GZP_VALIDATION_ID_LENGTH.
+  #error GZP_HOST_ID_LENGTH should be greater or equal to GZP_VALIDATION_ID_LENGTH.
 #endif
 
 #if (GZP_SESSION_TOKEN_LENGTH != GZP_HOST_ID_LENGTH)
-#error GZP_SESSION_TOKEN_LENGTH must equal GZP_HOST_ID_LENGTH.
+  #error GZP_SESSION_TOKEN_LENGTH must equal GZP_HOST_ID_LENGTH.
 #endif
 
 #ifdef GZLL_CRYPT_ENABLE
-#error Gazell encryption can not be enabled when using the Gazell pairing library. \
+  #error Gazell encryption can not be enabled when using the Gazell pairing library. \
   GZLL_CRYPT_ENABLE must be undefined.
 #endif
 
 /** @} */
+
 
 /******************************************************************************/
 /** @name Typedefs
  *  @{ */
 /******************************************************************************/
 
+
 /**
  * @enum gzp_key_select_t
  * @brief Enumerator used for selecting the key to be used for encryption.
  */
-typedef enum {
-  GZP_ID_EXCHANGE,  ///< "Secret key" only
-  GZP_KEY_EXCHANGE, ///< "Secret key" and "Host ID"
-  GZP_DATA_EXCHANGE ///< "Dynamic key" and "Host ID"
+typedef enum
+{
+  GZP_ID_EXCHANGE,    ///< "Secret key" only
+  GZP_KEY_EXCHANGE,   ///< "Secret key" and "Host ID"
+  GZP_DATA_EXCHANGE   ///< "Dynamic key" and "Host ID"
 } gzp_key_select_t;
+
 
 /**
  * @enum gzp_cmd_t
  * @brief Enumerator used in the first payload byte of each packet to
  * indicate the packet type.
  */
-typedef enum {
+typedef enum
+{
   GZP_CMD_HOST_ADDRESS_REQ = 0,     ///< Host address request
   GZP_CMD_HOST_ADDRESS_FETCH,       ///< Host address fetch
   GZP_CMD_HOST_ID_REQ,              ///< Host ID request
@@ -272,21 +229,24 @@ typedef enum {
   GZP_CMD_ENCRYPTED_USER_DATA_RESP, ///< Encrypted user data response
 } gzp_cmd_t;
 
+
 /**
  * @enum gzp_id_req_res_t
  * @brief Enumerator used to identify the state of the current
  * Host ID request.
  */
-typedef enum {
+typedef enum
+{
   GZP_ID_RESP_PENDING,   ///< ID response pending
   GZP_ID_RESP_GRANTED,   ///< ID response granted
   GZP_ID_RESP_REJECTED,  ///< ID response rejected
   GZP_ID_RESP_FAILED,    ///< ID response failed
-  GZP_ID_RESP_NO_REQUEST ///< Default value. No ID request has yet been
-                         ///< received.
+  GZP_ID_RESP_NO_REQUEST ///< Default value. No ID request has yet been received.
 } gzp_id_req_res_t;
 
+
 /** @} */
+
 
 /******************************************************************************/
 /** @name Misc. function prototypes
@@ -300,6 +260,7 @@ typedef enum {
  */
 void gzp_crypt_set_session_token(const uint8_t *token);
 
+
 /**
  * Get the session token.
  *
@@ -307,12 +268,14 @@ void gzp_crypt_set_session_token(const uint8_t *token);
  */
 void gzp_crypt_get_session_token(uint8_t *dst_token);
 
+
 /**
  * Set the dynamic key.
  *
  * @param dyn_key Pointer to the dynamic key to set.
  */
-void gzp_crypt_set_dyn_key(const uint8_t *dyn_key);
+void gzp_crypt_set_dyn_key(const uint8_t* dyn_key);
+
 
 /**
  * Get the dynamic key.
@@ -321,12 +284,14 @@ void gzp_crypt_set_dyn_key(const uint8_t *dyn_key);
  */
 void gzp_crypt_get_dyn_key(uint8_t *dst_key);
 
+
 /**
  * Set the Host ID.
  *
  * @param src Pointer to the Host ID to set.
  */
-static void gzp_set_host_id(const uint8_t *src);
+static void gzp_set_host_id(const uint8_t* src);
+
 
 /**
  * Get the Host ID.
@@ -335,6 +300,7 @@ static void gzp_set_host_id(const uint8_t *src);
  */
 void gzp_get_host_id(uint8_t *dst);
 
+
 /**
  * Selecting what key-set that should be used when encrypting data
  * using gzp_crypt().
@@ -342,6 +308,7 @@ void gzp_get_host_id(uint8_t *dst);
  * @param key_select Key-set to use.
  */
 void gzp_crypt_select_key(gzp_key_select_t key_select);
+
 
 /**
  * Encypt / decrypt data.
@@ -355,7 +322,8 @@ void gzp_crypt_select_key(gzp_key_select_t key_select);
  * @param src Source data to encrypt.
  * @param length Length in bytes of src.
  */
-void gzp_crypt(uint8_t *dst, const uint8_t *src, uint8_t length);
+void gzp_crypt(uint8_t* dst, const uint8_t* src, uint8_t length);
+
 
 /**
  * Compare the *src_id with a pre-defined validation ID.
@@ -367,6 +335,7 @@ void gzp_crypt(uint8_t *dst, const uint8_t *src, uint8_t length);
  */
 bool gzp_validate_id(const uint8_t *src_id);
 
+
 /**
  * Add the pre-defined validation ID to dst_id.
  * GZP_VALIDATION_ID_LENGTH bytes will be added.
@@ -375,6 +344,7 @@ bool gzp_validate_id(const uint8_t *src_id);
  */
 void gzp_add_validation_id(uint8_t *dst_id);
 
+
 /**
  * Generate random bytes.
  *
@@ -382,6 +352,7 @@ void gzp_add_validation_id(uint8_t *dst_id);
  * @param n   Number of bytes to generate.
  */
 void gzp_random_numbers_generate(uint8_t *dst, uint8_t n);
+
 
 /**
  * Update the channel table and the system address.
@@ -399,6 +370,7 @@ void gzp_random_numbers_generate(uint8_t *dst, uint8_t n);
  */
 bool gzp_update_radio_params(const uint8_t *system_address);
 
+
 /**
  * Generate a set of channels from a 4 byte address.
  *
@@ -407,8 +379,8 @@ bool gzp_update_radio_params(const uint8_t *system_address);
  * @param address Four byte address to generate the channel set from.
  * @param channel_set_size Size of the channel set to generate.
  */
-void gzp_generate_channels(uint8_t *ch_dst, const uint8_t *address,
-                           uint8_t channel_set_size);
+void gzp_generate_channels(uint8_t *ch_dst, const uint8_t * address, uint8_t channel_set_size);
+
 
 /**
  * Perform an XOR on two byte strings.
@@ -418,20 +390,19 @@ void gzp_generate_channels(uint8_t *ch_dst, const uint8_t *address,
  * @param pad
  * @param length Number of bytes to perform the XOR operation on.
  */
-void gzp_xor_cipher(uint8_t *dst, const uint8_t *src, const uint8_t *pad,
-                    uint8_t length);
+void gzp_xor_cipher(uint8_t* dst, const uint8_t* src, const uint8_t* pad, uint8_t length);
+
 
 /******************************************************************************/
 /** @name Common Device and Host functions
  *  @{ */
 /******************************************************************************/
 
-/**
- * Initialization function. This function initializes the Gazell Pairing
- Library.
 
- * This function must be called before any of the other Gazell Pairing Library
- functions are
+/**
+ * Initialization function. This function initializes the Gazell Pairing Library.
+
+ * This function must be called before any of the other Gazell Pairing Library functions are
  * used and must be called @b after gzll_init() is called.
  *
  */
@@ -493,27 +464,26 @@ void nrf_gzp_reset_tx_complete(void);
 void nrf_gzp_reset_tx_success(void);
 
 /**
- * Function to check whether a Device has existing pairing data, implying that
- * it is paired to a Host.
- *
- * @retval -2 The pairing database is empty.
- * @retval -1 The device has a system address but no Host ID.
- * @retval >=0 The device has a system address and HostID at this index value in
- * the database.
- */
+* Function to check whether a Device has existing pairing data, implying that it is
+* paired to a Host.
+*
+* @retval -2 The pairing database is empty.
+* @retval -1 The device has a system address but no Host ID.
+* @retval >=0 The device has a system address and HostID at this index value in the database.
+*/
 int8_t gzp_get_pairing_status(void);
 
 /**
   Function for sending a "system address" request to a Host.
 
-  When calling this function the Device will attempt acquiring the "system
-  address" from any Host within close proximity.
+  When calling this function the Device will attempt acquiring the "system address" from
+  any Host within close proximity.
 
-  If a host is located within close proximity and pairing is enabled in the
-  Host, a "system address" will be sent in return to the Device.
+  If a host is located within close proximity and pairing is enabled in the Host,
+  a "system address" will be sent in return to the Device.
 
-  The new "system address" will apply immediately in the Device, and the new
-  "system address" will be stored in non volatile (NV) memory.
+  The new "system address" will apply immediately in the Device, and the new "system address"
+  will be stored in non volatile (NV) memory.
 
   Note. Using OTP devices limits the number of times a new "system address" can
   be stored in NV memory.
@@ -534,8 +504,8 @@ bool gzp_address_req_send(void);
   The request will be sent using the "system address" previously received using
   gzp_address_req_send().
 
-  It is not required that the Host is within close proximity in order to acquire
-  the "Host ID".
+  It is not required that the Host is within close proximity in order to acquire the
+  "Host ID".
 
   The new "Host ID" will apply immediately for the Device, and the new "Host ID"
   will be stored in non volatile (NV) memory.
@@ -545,15 +515,12 @@ bool gzp_address_req_send(void);
 
   @return
 
-  @retval GZP_ID_RESP_PENDING if a "Host ID request" has been sent to the Host,
-  but the Host application has not yet decided whether to Grant or Reject the
-  "ID request".
-  @retval GZP_ID_RESP_GRANTED if the "Host ID" has been received from the Host.
-  The received "Host ID" will be stored in non volatile memory.
-  @retval GZP_ID_RESP_REJECTED if the Host application has rejected the "Host ID
-  request".
-  @retval GZP_ID_RESP_FAILED if failing to send a request or receive a response
-  from the Host.
+  @retval GZP_ID_RESP_PENDING if a "Host ID request" has been sent to the Host, but the Host application has
+  not yet decided whether to Grant or Reject the "ID request".
+  @retval GZP_ID_RESP_GRANTED if the "Host ID" has been received from the Host. The received "Host ID" will be stored
+  in non volatile memory.
+  @retval GZP_ID_RESP_REJECTED if the Host application has rejected the "Host ID request".
+  @retval GZP_ID_RESP_FAILED if failing to send a request or receive a response from the Host.
 */
 gzp_id_req_res_t gzp_id_req_send(void);
 
@@ -569,25 +536,23 @@ gzp_id_req_res_t gzp_id_req_send(void);
 
 
   @return
-  @retval true if the data was successfully transmitted and decrypted by the
-  Host.
-  @retval false if data transmission failed or Host failed to decryption data
-  correctly.
+  @retval true if the data was successfully transmitted and decrypted by the Host.
+  @retval false if data transmission failed or Host failed to decryption data correctly.
 */
 bool gzp_crypt_data_send(const uint8_t *src, uint8_t length);
+
 
 /**
 @name Host functions
 */
 
 /**
-  Function for enabling/disabling pairing in a host. When pairing is enabled the
-  host will be monitoring for "system address" and "Host ID" requests from
-  Devices.
+  Function for enabling/disabling pairing in a host. When pairing is enabled the host will
+  be monitoring for "system address" and "Host ID" requests from Devices.
 
   A "system address request" received from a Device will always be granted.
-  When a "host ID request" has been received, the Host application have to
-  grant, reject or cancel this by using one of the following functions:
+  When a "host ID request" has been received, the Host application have to grant,
+  reject or cancel this by using one of the following functions:
 
   - gzp_id_req_grant()
   - gzp_id_req_reject()
@@ -609,17 +574,17 @@ void gzp_host_execute(void);
 /**
  * Address exchanged check.
  *
- * @retval true  If a "system address" was delivered to a requesting Device
- * during the previous call to gzp_host_execute();
+ * @retval true  If a "system address" was delivered to a requesting Device during the
+ *               previous call to gzp_host_execute();
  * @retval false Otherwise.
- */
+*/
 bool gzp_address_exchanged(void);
 
 /**
   Function for checking if a "Host ID request" has been received from a Device.
 
-  If a request has been received, the Pairing library will enter "ID request
-  pending" state.
+  If a request has been received, the Pairing library will enter "ID request pending"
+  state.
 
   The application is responsible for responding to this request by calling
   one of the following functions:
@@ -628,42 +593,38 @@ bool gzp_address_exchanged(void);
   - gzp_id_req_reject()
   - gzp_id_req_cancel()
 
-  @retval true if a "Host ID request" has been received (internal state is "ID
-  request pending")
-  @retval false if no "Host ID request" has been received (internal state is "ID
-  request idle")
+  @retval true if a "Host ID request" has been received (internal state is "ID request pending")
+  @retval false if no "Host ID request" has been received (internal state is "ID request idle")
 */
 bool gzp_id_req_received(void);
 
 /**
-  Function for rejecting the previously received "Host ID request". This
-  function should be called only when a "Host ID request" has been received
-  (internal state is "ID request pending").
+  Function for rejecting the previously received "Host ID request". This function should be called
+  only when a "Host ID request" has been received (internal state is "ID request pending").
 
-  The internal state of the Pairing library will remain "ID request pending"
-  until the a "reject" message has been successfully transmitted to the
-  requesting Device. After this the internal state will change to "ID request
-  idle".
+  The internal state of the Pairing library will remain "ID request pending" until the a "reject" message
+  has been successfully transmitted to the requesting Device. After this the internal state will
+  change to "ID request idle".
 */
 void gzp_id_req_reject(void);
 
 /**
- * Function for granting the previously received "Host ID request". This
- function should be called only when a "Host ID request" has been received
- (internal state is "ID request pending").
+ * Function for granting the previously received "Host ID request". This function should be called
+  only when a "Host ID request" has been received (internal state is "ID request pending").
 
-  The internal state of the Pairing library will remain "ID request pending"
- until the "Host ID" has been successfully transmitted to the requesting Device.
- After this the internal state will change to "ID request idle".
+  The internal state of the Pairing library will remain "ID request pending" until the "Host ID" has
+  been successfully transmitted to the requesting Device. After this the internal state will
+  change to "ID request idle".
 */
 void gzp_id_req_grant(void);
+
 
 /**
  * Check if user data has been received.
  *
  * @retval true  If encrypted user data has been received.
  * @retval false Otherwise.
- */
+*/
 bool gzp_crypt_user_data_received(void);
 
 /**
@@ -673,14 +634,15 @@ bool gzp_crypt_user_data_received(void);
   that was decrypted correctly will be presented.
 
   @param dst* is a pointer to where the received data will be written.
-  @param length* is a pointer for returning the number of bytes received. Only 1
-  byte will be writtem to length*.
+  @param length* is a pointer for returning the number of bytes received. Only 1 byte will
+  be writtem to length*.
 
   @return
   @retval true if data has been received and is written to dst*
   @retval false if no data has been received.
 */
-bool gzp_crypt_user_data_read(uint8_t *dst, uint8_t *length);
+bool gzp_crypt_user_data_read(uint8_t* dst, uint8_t* length);
+
 
 /**
   Function emulating behavior of gzll_rx_start() in legeacy nRF24xx Gaell
@@ -690,9 +652,11 @@ bool gzp_crypt_user_data_read(uint8_t *dst, uint8_t *length);
 */
 void gzll_rx_start(void);
 
+
 /** @} */
 /** @} */
 /** @} */
+
 
 #ifdef __cplusplus
 }

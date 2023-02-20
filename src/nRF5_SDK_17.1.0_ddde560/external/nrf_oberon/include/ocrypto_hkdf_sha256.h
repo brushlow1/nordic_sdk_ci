@@ -3,11 +3,11 @@
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice,
- * this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form, except as embedded into a Nordic
  *    Semiconductor ASA integrated circuit in a product or a software update for
@@ -22,20 +22,19 @@
  * 4. This software, with or without modification, must only be used with a
  *    Nordic Semiconductor ASA integrated circuit.
  *
- * 5. Any software provided in binary form under this license must not be
- * reverse engineered, decompiled, modified and/or disassembled.
+ * 5. Any software provided in binary form under this license must not be reverse
+ *    engineered, decompiled, modified and/or disassembled.
  *
  * THIS SOFTWARE IS PROVIDED BY NORDIC SEMICONDUCTOR ASA "AS IS" AND ANY EXPRESS
  * OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
  * OF MERCHANTABILITY, NONINFRINGEMENT, AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL NORDIC SEMICONDUCTOR ASA OR CONTRIBUTORS BE
  * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
- * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
- * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
- * POSSIBILITY OF SUCH DAMAGE.
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+ * GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
 
@@ -53,8 +52,7 @@
  *
  * HKDF-SHA256 is a key derivation function based on HMAC-SHA256.
  *
- * @see [RFC 5869 - HMAC-based Extract-and-Expand Key Derivation Function
- * (HKDF)](http://tools.ietf.org/html/rfc5869)
+ * @see [RFC 5869 - HMAC-based Extract-and-Expand Key Derivation Function (HKDF)](http://tools.ietf.org/html/rfc5869)
  */
 
 #ifndef OCRYPTO_HKDF_SHA256_H
@@ -63,9 +61,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 
 /**
  * Maximum length of a derived key.
@@ -77,6 +77,7 @@ extern "C" {
  */
 #define ocrypto_hkdf_sha256_SALT_LENGTH_MAX (64)
 
+
 /**
  * HKDF-SHA256 algorithm.
  *
@@ -85,19 +86,19 @@ extern "C" {
  * into @p r.
  *
  * @param[out] r        Output key.
- * @param      r_len    Length of @p r, 0 < @p r_len <= @c
- * ocrypto_hkdf_sha256_LENGTH_MAX.
+ * @param      r_len    Length of @p r, 0 < @p r_len <= @c ocrypto_hkdf_sha256_LENGTH_MAX.
  * @param      key      Input key.
  * @param      key_len  Length of @p key.
  * @param      salt     Salt.
- * @param      salt_len Length of salt @p salt. 0 <= @p salt_len <= @c
- * ocrypto_hkdf_sha256_SALT_LENGTH_MAX.
+ * @param      salt_len Length of salt @p salt. 0 <= @p salt_len <= @c ocrypto_hkdf_sha256_SALT_LENGTH_MAX.
  * @param      info     Additional information.
  * @param      info_len Length of @p info.
  */
-void ocrypto_hkdf_sha256(uint8_t *r, size_t r_len, const uint8_t *key,
-                         size_t key_len, const uint8_t *salt, size_t salt_len,
-                         const uint8_t *info, size_t info_len);
+void ocrypto_hkdf_sha256(
+    uint8_t* r, size_t r_len,
+    const uint8_t* key, size_t key_len,
+    const uint8_t* salt, size_t salt_len,
+    const uint8_t* info, size_t info_len);
 
 #ifdef __cplusplus
 }
@@ -106,3 +107,4 @@ void ocrypto_hkdf_sha256(uint8_t *r, size_t r_len, const uint8_t *key,
 #endif /* #ifndef OCRYPTO_HKDF_SHA256_H */
 
 /** @} */
+
