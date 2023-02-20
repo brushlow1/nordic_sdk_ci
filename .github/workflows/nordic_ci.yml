@@ -23,7 +23,7 @@ jobs:
       uses: jidicula/clang-format-action@v4.10.2
       with:
         clang-format-version: '13'
-        check-path: 'src/nRF5_SDK_17.1.0_ddde560/examples/peripheral/blinky/main.c'
+        check-path: 'src/nRF5_SDK_17.1.0_ddde560/examples/peripheral/blinky/'
         
   cppcheck:
     name: Static analysis
