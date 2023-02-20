@@ -19,7 +19,5 @@ RUN cd /tools/install && \
     rm -rf /tools/install
 
 # Add emStudio to PATH
-RUN setenv PATH="/tools/ses/bin:$PATH"
-
-
+ENV PATH="/tools/ses/bin:$PATH"
 
