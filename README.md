@@ -19,3 +19,10 @@ The pertinent source files are checked for compliance to the clang-format rules 
 ### Static Analysis
 Cppcheck C/C++ static analysis is run on the repo's source files. The analysis uses a workflow by deep5050 from Github Actions Marketplace. Currently, the Cppcheck results report are pushed to the repo upon completion. This may not be the best thing to do with the report, and this is a likely area of improvement for this CI approach. 
 
+## Design Decisions
+### Docker
+Docker was chosen as a build environment due to its suitability for a CI application and its portability in keeping a repeatable build environment. One drawback to this configuration in its current state is the inaccessibility of the SES GUI and the debugging features therein. Adding a means to access the graphical aspects of the IDE would be useful. 
+
+### Github Actions Marketplace Workflows
+Existing workflows from other developers were leveraged for this exercise for the sake of expediency (and proof of concept). In a more extensive project, it would be better to run Cppcheck and clang-format with more fundamental tools, such as Cmake, so as to allow for more complete control and transparency in the build process. 
+
