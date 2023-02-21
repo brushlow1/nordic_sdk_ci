@@ -17,5 +17,5 @@ The firmware is built within a docker container based on Ubuntu 18.04 and config
 The pertinent source files are checked for compliance to the clang-format rules dictated in the .clang-format file in the repo's root directory. These rules are based on the default LLVM style. The check is accomplished using a workflow by jidicula from the Github Actions Marketplace. 
 
 ### Static Analysis
-Cppcheck C/C++ static analysis is run on the repo's source files. The analysis uses a workflow by deep5050 from Github Actions Marketplace. 
+Cppcheck C/C++ static analysis is run on the repo's source files. The analysis uses a workflow by deep5050 from Github Actions Marketplace. Currently, the Cppcheck results report are pushed to the repo upon completion. This may not be the best thing to do with the report, and this is a likely area of improvement for this CI approach. 
 
